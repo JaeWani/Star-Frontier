@@ -146,9 +146,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8062d445989df049a8209aa9d42df0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy:
-    attTarget: {fileID: 0}
-    hp: 10
-    moveSpeed: 3
-    att: 3
-    enemyAttDelay: 3
+  attTarget: {fileID: 0}
+  hp: 0
+  moveSpeed: 5
+  att: 0
+  enemyAttDelay: 0
+  enemyGold: 0
