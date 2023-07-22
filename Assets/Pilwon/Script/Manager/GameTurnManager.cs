@@ -8,6 +8,7 @@ public class Wave
 {
     [Header("# Wave Info")]
     public List<GameObject> enemy = new List<GameObject>();
+    public float maxSpawnDelay;
     public float maxSpawnTime;
 }
 
@@ -17,7 +18,7 @@ public class GameTurnManager : MonoBehaviour
 
     public Wave[] wave;
 
-    [Header("# TurnMgr Info")]  
+    [Header("# TurnMgr Info")]
     public int curWave = 0;
     public bool isBreakTime;
 
@@ -25,6 +26,7 @@ public class GameTurnManager : MonoBehaviour
     [SerializeField] private Camera mainCam;
     [SerializeField] private Button waveStart_Btn;
     [SerializeField] private Text text;
+    [SerializeField] private E_SpawnManager spawn;
     private float curTime;
 
     [Header("breakTime")]
@@ -55,20 +57,18 @@ public class GameTurnManager : MonoBehaviour
 
         if (curTime >= wave[curWave].maxSpawnTime && !isBreakTime)
         {
-            var enemy = GameObject.FindWithTag("Enemy");
-            Destroy(enemy);
-
             curTime = 0;
             curWave++; // 다음 웨이브
             breakTime();
         }
 
-        if(curTime > waitTime && isBreakTime) GameWaveStart();
+        if (curTime > waitTime && isBreakTime) GameWaveStart();
         curTime += Time.deltaTime;
     }
 
-    void breakTime(){
-        player.transform.position = new Vector3(0,-4);
+    void breakTime()
+    {
+        player.transform.position = new Vector3(0, -4);
         player.isNotActive = false;
         isBreakTime = true;
         breakTimeObj.SetActive(true);
@@ -77,13 +77,13 @@ public class GameTurnManager : MonoBehaviour
 
     void GameWaveStart()
     {
-        player.transform.position = new Vector3(0,0);
-        player.rigid.velocity = new Vector2(0,0);
+        player.transform.position = new Vector3(0, 0);
+        player.rigid.velocity = new Vector2(0, 0);
         player.isNotActive = true;
+        spawn.maxSpawnTime = wave[curWave].maxSpawnDelay;
         curTime = 0;
         isBreakTime = false;
         breakTimeObj.SetActive(false);
         mainCam.orthographicSize = 11;
     }
 }
- 

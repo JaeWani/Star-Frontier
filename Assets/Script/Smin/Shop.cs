@@ -25,6 +25,6 @@ public class Shop : MonoBehaviour
     public void Exit()
     {
         window.SetActive(false);
-        player.isNotActive = false;
+        if(GameTurnManager.instance.isBreakTime) player.isNotActive = false;
     }
 }

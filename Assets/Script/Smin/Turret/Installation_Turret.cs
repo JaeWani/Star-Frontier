@@ -20,6 +20,7 @@ public class Installation_Turret : MonoBehaviour
         isChoice = true;
         isChange = false;
         turretIndex = index;
+        Player.Instance.transform.position = new Vector3(0,0);
         arrow.SetActive(true);
         curIndex = 0;
         while (true)
@@ -42,8 +43,8 @@ public class Installation_Turret : MonoBehaviour
     private void Update() {
         if(!isChoice) return;
 
-        if(Input.GetKeyDown(KeyCode.LeftArrow) && !isChange) StartCoroutine(Left());
-        if(Input.GetKeyDown(KeyCode.RightArrow) && !isChange) StartCoroutine(Right());
+        if(Input.GetKeyDown(KeyCode.A) && !isChange) StartCoroutine(Left());
+        if(Input.GetKeyDown(KeyCode.D) && !isChange) StartCoroutine(Right());
         if(Input.GetKeyDown(KeyCode.Space) && !isChange) Choice();
     }
 
@@ -60,6 +61,7 @@ public class Installation_Turret : MonoBehaviour
             pos[curIndex].Init(pos[curIndex].level);
         }
         arrow.SetActive(false);
+        Player.Instance.transform.position = new Vector3(0,-4);
         Player.Instance.isNotActive = false;
         isChoice = false;
         isChange = false;
