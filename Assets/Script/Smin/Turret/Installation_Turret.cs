@@ -5,18 +5,22 @@ using UnityEngine;
 public class Installation_Turret : MonoBehaviour
 {
     [SerializeField] List<Turret_Pos> pos = new List<Turret_Pos>();
-    [SerializeField] GameObject shadow_ui;
     [SerializeField] GameObject arrow;
     [SerializeField] List<Turret_Base> turretPrefab = new List<Turret_Base>();
+    [SerializeField] GameObject turret_prop;
     public int turretIndex;
 
     bool isChoice;
+    bool isChange;
     [SerializeField] int curIndex;
     int maxLevel = 1;
 
-    void Init()
+    public void Init(int index)
     {
         isChoice = true;
+        isChange = false;
+        turretIndex = index;
+        arrow.SetActive(true);
         curIndex = 0;
         while (true)
         {
@@ -32,33 +36,38 @@ public class Installation_Turret : MonoBehaviour
             }
             break;
         }
-        shadow_ui.SetActive(true);
-
-
+        StartCoroutine(MoveTo(pos[curIndex].transform.position, 1));
     }
 
     private void Update() {
-        if(Input.GetKeyDown(KeyCode.LeftArrow)) StartCoroutine(Left());
-        if(Input.GetKeyDown(KeyCode.RightArrow)) StartCoroutine(Right());
-        if(Input.GetKeyDown(KeyCode.Space)) Choice();
+        if(!isChoice) return;
+
+        if(Input.GetKeyDown(KeyCode.LeftArrow) && !isChange) StartCoroutine(Left());
+        if(Input.GetKeyDown(KeyCode.RightArrow) && !isChange) StartCoroutine(Right());
+        if(Input.GetKeyDown(KeyCode.Space) && !isChange) Choice();
     }
 
     public void Choice()
     {
+        isChange = true;
         if(pos[curIndex].curTurret == null) {
-            var temp = Instantiate(turretPrefab[turretIndex], pos[curIndex].transform.position, Quaternion.identity);
+            Instantiate(turret_prop, pos[curIndex].transform.position + new Vector3(0, 0.15f), Quaternion.identity);
+            var temp = Instantiate(turretPrefab[turretIndex], pos[curIndex].transform.position + new Vector3(0, 0.45f), Quaternion.identity);
             pos[curIndex].curTurret = temp;
             pos[curIndex].curTurretIndex = turretIndex;
         }else if(pos[curIndex].level != maxLevel){
             pos[curIndex].level++;
             pos[curIndex].Init(pos[curIndex].level);
         }
-        shadow_ui.SetActive(false);
+        arrow.SetActive(false);
+        Player.Instance.isNotActive = false;
         isChoice = false;
+        isChange = false;
     }
 
     public IEnumerator Left()
     {
+        isChange = true;
         curIndex--;
         while (true)
         {
@@ -75,11 +84,13 @@ public class Installation_Turret : MonoBehaviour
             }
             break;
         }
-        StartCoroutine(MoveTo(pos[curIndex].transform.position, 1));
+        yield return StartCoroutine(MoveTo(pos[curIndex].transform.position, 0.5f));
+        isChange = false;
     }
 
     public IEnumerator Right()
     {
+        isChange = true;
         curIndex++;
         while (true)
         {
@@ -96,7 +107,8 @@ public class Installation_Turret : MonoBehaviour
             }
             break;
         }
-        StartCoroutine(MoveTo(pos[curIndex].transform.position, 1));
+        yield return StartCoroutine(MoveTo(pos[curIndex].transform.position, 0.5f));
+        isChange = false;
     }
 
     public IEnumerator MoveTo(Vector3 target, float sec)

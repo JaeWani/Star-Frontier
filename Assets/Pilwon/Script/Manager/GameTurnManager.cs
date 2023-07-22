@@ -7,10 +7,8 @@ using UnityEngine.UI;
 public class Wave
 {
     [Header("# Wave Info")]
-    [Tooltip("처치해야 하는 킬 수 -> 다음 스테이지")]
-    public int enemyCount = 0;
-    // 그 웨이브에 뜨는 몬스터
     public List<GameObject> enemy = new List<GameObject>();
+    public float maxSpawnTime;
 }
 
 public class GameTurnManager : MonoBehaviour
@@ -20,56 +18,72 @@ public class GameTurnManager : MonoBehaviour
     public Wave[] wave;
 
     [Header("# TurnMgr Info")]  
-    [Tooltip("현재웨이브")]
     public int curWave = 0;
-    [Tooltip("게임최대웨이브")]
-    public int maxWave;
-
-    [Header("# TurnMgr Bool Info")]
-    // 쉬는시간인지 판단해주는 값
-    public bool isBreakTime = false;
+    public bool isBreakTime;
 
     [Header("# TurnMgr UI Info")]
+    [SerializeField] private Camera mainCam;
     [SerializeField] private Button waveStart_Btn;
     [SerializeField] private Text text;
+    private float curTime;
+
+    [Header("breakTime")]
+    [SerializeField] private Player player;
+    [SerializeField] private GameObject breakTimeObj;
+    [SerializeField] private float waitTime;
 
     void Awake()
     {
         instance = this;
 
-        // Button
-        waveStart_Btn.onClick.AddListener(() => GameWaveStart());
+        //waveStart_Btn.onClick.AddListener(() => GameWaveStart());
+        breakTime();
     }
 
     void Update()
     {
-        text.text = "게임턴 : " + (curWave + 1);
         GameWave();
     }
 
     void GameWave()
     {
-        // 예외처리
         if (curWave >= wave.Length)
         {
             Debug.Log("웨이브 끝");
             return;
         }
-        // 예외처리
 
-        if (wave[curWave].enemyCount == 0)
+        if (curTime >= wave[curWave].maxSpawnTime && !isBreakTime)
         {
             var enemy = GameObject.FindWithTag("Enemy");
             Destroy(enemy);
 
+            curTime = 0;
             curWave++; // 다음 웨이브
-            isBreakTime = true;
+            breakTime();
         }
+
+        if(curTime > waitTime && isBreakTime) GameWaveStart();
+        curTime += Time.deltaTime;
+    }
+
+    void breakTime(){
+        player.transform.position = new Vector3(0,-4);
+        player.isNotActive = false;
+        isBreakTime = true;
+        breakTimeObj.SetActive(true);
+        mainCam.orthographicSize = 5;
     }
 
     void GameWaveStart()
     {
+        player.transform.position = new Vector3(0,0);
+        player.rigid.velocity = new Vector2(0,0);
+        player.isNotActive = true;
+        curTime = 0;
         isBreakTime = false;
+        breakTimeObj.SetActive(false);
+        mainCam.orthographicSize = 11;
     }
 }
  

@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class E_SpawnManager : MonoBehaviour
 {
-    [SerializeField] private GameObject enemy;
     [SerializeField] private List<GameObject> spawnPos = new List<GameObject>();
     
-    [SerializeField] private float curSpawnTime;
     [SerializeField] private float maxSpawnTime;
+    private float curSpawnTime;
 
     GameTurnManager turnMgr;
 
@@ -27,7 +26,6 @@ public class E_SpawnManager : MonoBehaviour
         {
             curSpawnTime += Time.deltaTime;
         }
-
         else if (turnMgr.isBreakTime == false && curSpawnTime >= maxSpawnTime)
         {
             int _enemyNum = Random.Range(0, turnMgr.wave[turnMgr.curWave].enemy.Count);  

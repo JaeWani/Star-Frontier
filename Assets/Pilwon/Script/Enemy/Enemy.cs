@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Enemy : EnemyBase
 {
-
     Rigidbody2D rigid;
     GameTurnManager turnMgr;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         rigid = GetComponent<Rigidbody2D>();
         attTarget = GameObject.Find("Tower");
 
@@ -31,8 +31,14 @@ public class Enemy : EnemyBase
     {
         if(collison.gameObject.CompareTag("Tower"))
         {
-            GameTurnManager.instance.wave[turnMgr.curWave].enemyCount--;
-            Destroy(gameObject);
+            //타워 체력 까기
+            DieDestroy();
         }
+    }
+
+    protected override void DieDestroy()
+    {
+        Debug.Log("test");
+        Destroy(gameObject);
     }
 }

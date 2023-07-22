@@ -10,10 +10,9 @@ public class Explosion : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log(other);
-        // if (other.TryGetComponent<Enemy_Base>(out var e_hit))
-        //     {
-        //         e_hit.Enemy_Damage(10);
-        //     }
+        if (other.TryGetComponent<EnemyBase>(out var e_hit))
+            {
+                e_hit.Damage(10);
+            }
     }
 }
