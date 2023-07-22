@@ -43,7 +43,6 @@ public class Turret : MonoBehaviour
 
         foreach (var n in hit)
         {
-            Debug.Log(n);
             if(n.CompareTag("Enemy")){
                 float curDistance = Vector3.Distance(transform.position, n.transform.position);
                 if (curDistance < minDistance)

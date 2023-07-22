@@ -202,7 +202,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 219189493}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.31, y: 1.22, z: 0}
+  m_LocalPosition: {x: 6.6, y: 1.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -273,7 +273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &358774461
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -353,10 +353,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a50d0f4dee3b0ae41b8e33340203dba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 3453406067603583958, guid: e639eb93a7313e34fab24eb0beea1f7f, type: 3}
+  bullet: {fileID: 3867253902970615999, guid: 11174ecd32d82de46bfbb06dfce991eb, type: 3}
   level: 0
   damage: 1
-  fire_delay: 1
+  radius: 1
+  fire_delay: 3
 --- !u!1 &1457212470
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,7 +375,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1457212471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,10 +388,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb4a072be1fb5844685d91c613e327ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 3453406067603583958, guid: e639eb93a7313e34fab24eb0beea1f7f, type: 3}
+  bullet: {fileID: 3453406067603583958, guid: ac6803c7a84e3684fa668438d8d3dd70, type: 3}
   level: 0
   damage: 0
-  bulletSpeed: 20
+  bulletSpeed: 10
   radius: 5
   fire_delay: 1
 --- !u!212 &1457212472

@@ -7,6 +7,7 @@ public class Laser_Turret : MonoBehaviour
     [SerializeField] private GameObject bullet;
     [SerializeField] private int level;
     [SerializeField] private float damage;
+    [SerializeField] private float radius;
     [SerializeField] private float fire_delay;
     private float cur_delay;
 
@@ -22,21 +23,16 @@ public class Laser_Turret : MonoBehaviour
         if (cur_delay >= fire_delay)
         {
             Fire();
-        }else cur_delay += Time.deltaTime;
+        }
+        else cur_delay += Time.deltaTime;
     }
 
     private void Fire()
     {
         cur_delay = 0;
-        int ranRot = Random.Range(0, 4);
-        int rot = 0;
-        //이따가 값 수정하셈
-        switch(ranRot){
-            case 0: rot = 0; break;
-            case 1: rot = 45; break;
-            case 2: rot = 90; break;
-            case 3: rot = 135; break;
-        }
-        var temp = Instantiate(bullet, transform.position, Quaternion.Euler(0,0,rot)).GetComponent<Bullet_Base>();
+        int ranRot = Random.Range(90, 271);
+        Vector3 pos = transform.position + new Vector3(Mathf.Cos(ranRot * Mathf.Deg2Rad) * radius,
+                        Mathf.Sign(ranRot * Mathf.Rad2Deg) * radius);
+        var temp = Instantiate(bullet, transform.position, Quaternion.Euler(0, 0, ranRot + 180)).GetComponent<Bullet_Base>();
     }
 }

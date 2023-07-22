@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Explosion_Bullet : Bullet_Base
 {
+    [SerializeField] private GameObject explosion;
+
     protected override void Update()
     {
         base.Update();
@@ -11,7 +13,7 @@ public class Explosion_Bullet : Bullet_Base
     }
 
     protected override void Hit_Event(){
-        
+        Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }
