@@ -35,7 +35,8 @@ public class GameTurnManager : MonoBehaviour
 
     void Awake()
     {
-        instance = this;
+        if(instance == null) instance = this;
+        else if(instance != this) Destroy(gameObject);
 
         // Button
         waveStart_Btn.onClick.AddListener(() => GameWaveStart());
