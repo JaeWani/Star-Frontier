@@ -22,7 +22,7 @@ public class AnimManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(TitleAnim());
+        //StartCoroutine(TitleAnim());
     }
 
     IEnumerator TitleAnim()
