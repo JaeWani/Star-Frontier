@@ -6,11 +6,14 @@ public class Enemy : EnemyBase
 {
 
     Rigidbody2D rigid;
+    GameTurnManager turnMgr;
 
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
         attTarget = GameObject.Find("Tower");
+
+        turnMgr = GameTurnManager.instance;
     }
 
     void Update()
@@ -28,6 +31,7 @@ public class Enemy : EnemyBase
     {
         if(collison.gameObject.CompareTag("Tower"))
         {
+            GameTurnManager.instance.wave[turnMgr.curWave].enemyCount--;
             Destroy(gameObject);
         }
     }

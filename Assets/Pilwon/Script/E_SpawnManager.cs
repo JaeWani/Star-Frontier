@@ -10,6 +10,12 @@ public class E_SpawnManager : MonoBehaviour
     [SerializeField] private float curSpawnTime;
     [SerializeField] private float maxSpawnTime;
 
+    GameTurnManager turnMgr;
+
+    void Start()
+    {
+        turnMgr = GameTurnManager.instance;
+    }
     void Update()
     {
         EnemySpawn();
@@ -22,10 +28,11 @@ public class E_SpawnManager : MonoBehaviour
             curSpawnTime += Time.deltaTime;
         }
 
-        else if (curSpawnTime >= maxSpawnTime)
+        else if (turnMgr.isBreakTime == false && curSpawnTime >= maxSpawnTime)
         {
-            int _num = Random.Range(0, 6);  
-            Instantiate(enemy, spawnPos[_num].transform.position , Quaternion.identity);
+            int _enemyNum = Random.Range(0, turnMgr.wave[turnMgr.curWave].enemy.Count);  
+            int _spawnPos = Random.Range(0, 6);
+            Instantiate(turnMgr.wave[turnMgr.curWave].enemy[_enemyNum], spawnPos[_spawnPos].transform.position , Quaternion.identity);
 
             curSpawnTime = 0;   
         }
