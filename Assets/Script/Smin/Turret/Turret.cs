@@ -43,7 +43,9 @@ public class Turret : Turret_Base
         cur_delay = 0;
         if(target == Vector3.zero) return;
 
-        Vector3 direction = target - transform.position;
+        direction = target - transform.position;
+        float angle = Vector2.SignedAngle(Vector2.right, direction);
+        me.eulerAngles = new Vector3(0, 0, angle + 180f);
         float z = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion rot = Quaternion.Euler(0, 0, z - 90f);
         var temp = Instantiate(bullet, transform.position, rot).GetComponent<Bullet_Base>();

@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class Laser_Turret : Turret_Base
 {
-    public void Init(float _damage, float _fire_delay)
-    {
-        damage = _damage;
-        fire_delay = _fire_delay;
-    }
-
     private void Update()
     {
         if (cur_delay >= fire_delay)

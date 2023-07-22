@@ -7,7 +7,7 @@ public abstract class Bullet_Base : MonoBehaviour
     float cur_lifeTime;
     [SerializeField] protected float lifeTime;
     [SerializeField] protected float moveSpeed;
-    [SerializeField] protected float damage;
+    [SerializeField] protected int damage;
 
     [SerializeField] protected bool isStop;
 
@@ -15,7 +15,7 @@ public abstract class Bullet_Base : MonoBehaviour
         isStop = _isStop;
     }
 
-    public void Init(float _lifeTime, float _moveSpeed, float _damage)
+    public void Init(float _lifeTime, float _moveSpeed, int _damage)
     {
         lifeTime = _lifeTime;
         moveSpeed = _moveSpeed;
@@ -36,6 +36,7 @@ public abstract class Bullet_Base : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D hit) {
         if(hit.collider.CompareTag("Enemy")) {
+            hit.collider.GetComponent<EnemyBase>().Damage(damage);
             Hit_Event();
         }
     }
