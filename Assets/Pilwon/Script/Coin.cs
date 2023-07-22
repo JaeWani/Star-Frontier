@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
     [SerializeField] private float flySpeed;
     private Vector2 playerDir;
-    private bool isToPlayer; // 플레이어에게 닿으면 코인이 갈 지 판단해주는 변수
+    [SerializeField] private bool isToPlayer; // 플레이어에게 닿으면 코인이 갈 지 판단해주는 변수
 
     Rigidbody2D rigid;
 
@@ -18,23 +17,39 @@ public class Coin : MonoBehaviour
 
     void Update()
     {
-        Magnet();
+        //Magnet();
     }
 
     void Magnet()
     {
-        if (isToPlayer)
-        {
-            playerDir = -(transform.position - player.transform.position).normalized;
-            rigid.velocity = new Vector2(playerDir.x, playerDir.y) * flySpeed;
-        }
+        // if (isToPlayer)
+        // {
+        //     playerDir = -(transform.position - Player.Instance.transform.position).normalized;
+        //     rigid.velocity = new Vector2(playerDir.x, playerDir.y) * flySpeed;
+        // }
     }
 
     void OnTriggerEnter2D(Collider2D collison)
     {
-        if(collison.gameObject.name.Equals("CoinMagnet"))
+        if (collison.gameObject.name.Equals("CoinMagnet"))
         {
-            isToPlayer = true;
+            StartCoroutine(MoveTo(1));
         }
+    }
+
+    IEnumerator MoveTo(float sec)
+    {
+        float timer = 0f;
+        Vector3 start = transform.position;
+
+        while (timer <= sec)
+        {
+            transform.position = Vector3.LerpUnclamped(start, Player.Instance.transform.position, Easing.easeInOutBack(timer / sec));
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        GameManager.instance.playerMoney += Mathf.RoundToInt(10 * Player.Instance.goldMultiple);
+        Destroy(gameObject);
+        yield break;
     }
 }

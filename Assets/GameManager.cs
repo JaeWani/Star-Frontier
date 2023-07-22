@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     [Tooltip("플레이어 돈(Int)")]
     [SerializeField] Text goldText;
-    public int playerMoney = 0;
+    public int playerMoney = 100;
 
     void Awake()
     {

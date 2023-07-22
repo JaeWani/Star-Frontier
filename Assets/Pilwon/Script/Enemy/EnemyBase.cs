@@ -8,6 +8,7 @@ public abstract class EnemyBase : MonoBehaviour
     // 적의 공통점 : 체력, 움직임속도, 공격력, 공격딜레이, 공격타겟
     [Header("# Enemy Info")]
     [SerializeField] protected GameObject attTarget;
+    [SerializeField] protected GameObject coin;
     [SerializeField] protected int hp;
     [SerializeField] protected int moveSpeed;
     [SerializeField] protected int att;
@@ -31,7 +32,6 @@ public abstract class EnemyBase : MonoBehaviour
         {
             if(isDie) return;
             isDie = true;
-            Debug.Log("1");
             dieAction?.Invoke();
         }
     }

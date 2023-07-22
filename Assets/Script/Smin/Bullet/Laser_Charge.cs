@@ -18,7 +18,7 @@ public class Laser_Charge : MonoBehaviour
     IEnumerator Chage()
     {
         while(true){
-            if(transform.lossyScale == new Vector3(1, 1))
+            if(transform.lossyScale == new Vector3(2, 2))
                 break;
             else
                 transform.localScale = new Vector3(transform.localScale.x + sizeup, transform.localScale.y + sizeup, 0);

@@ -10,18 +10,21 @@ public class Smithy : MonoBehaviour
 
     public void Turret()
     {
+        if(GameManager.instance.playerMoney - 50 >= 0) GameManager.instance.playerMoney -= 50;
         window.SetActive(false);
         turret.Init(0);
     }
 
     public void Explosion_Turret()
     {
+        if(GameManager.instance.playerMoney - 50 >= 0) GameManager.instance.playerMoney -= 50;
         window.SetActive(false);
         turret.Init(1);
     }
 
     public void Laser_Turret()
     {
+        if(GameManager.instance.playerMoney - 50 >= 0) GameManager.instance.playerMoney -= 50;
         window.SetActive(false);
         turret.Init(2);
     }

@@ -38,7 +38,7 @@ public class Enemy : EnemyBase
 
     protected override void DieDestroy()
     {
-        Debug.Log("test");
+        Instantiate(coin, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }

@@ -56,14 +56,5 @@ public class Player : MonoBehaviour
             }
         }
     }
-
-    void OnTriggerEnter2D(Collider2D collison)
-    {
-        if(collison.gameObject.name.Equals("Player"))
-        {
-            GameManager.instance.playerMoney += Mathf.RoundToInt(10 * goldMultiple);
-            Destroy(collison.gameObject);
-        }
-    }
 }
 
