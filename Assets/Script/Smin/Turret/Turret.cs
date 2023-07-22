@@ -2,23 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : MonoBehaviour
+public class Turret : Turret_Base
 {
-    [SerializeField] private GameObject bullet;
-    [SerializeField] private int level;
-    [SerializeField] private float damage;
+    [Header("Turret")]
     [SerializeField] private float bulletSpeed;
-    [SerializeField] private float radius;
-    [SerializeField] private float fire_delay;
-    private float cur_delay;
-
-
-    public void Init(float _damage, float _radius, float _fire_delay)
-    {
-        damage = _damage;
-        radius = _radius;
-        fire_delay = _fire_delay;
-    }
 
     private void Update()
     {
@@ -31,12 +18,12 @@ public class Turret : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, radius);
+        Gizmos.DrawWireSphere(transform.position, checkRadius);
     }
 
     private void Fire()
     {
-        var hit = Physics2D.OverlapCircleAll(transform.position, radius);
+        var hit = Physics2D.OverlapCircleAll(transform.position, checkRadius);
 
         float minDistance = float.MaxValue;
         Vector3 target = Vector3.zero;
