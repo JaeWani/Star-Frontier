@@ -7,6 +7,7 @@ using UnityEngine;
 public class Turret_Pos : MonoBehaviour
 {
     public Turret_Base curTurret;
+    public int curTurretIndex;
     public int level;
 
     public void Init(int level){

@@ -7,7 +7,9 @@ public class Installation_Turret : MonoBehaviour
     [SerializeField] List<Turret_Pos> pos = new List<Turret_Pos>();
     [SerializeField] GameObject shadow_ui;
     [SerializeField] GameObject arrow;
-    public Turret_Base curTurret;
+    [SerializeField] List<Turret_Base> turretPrefab = new List<Turret_Base>();
+    public int turretIndex;
+
     bool isChoice;
     [SerializeField] int curIndex;
     int maxLevel = 1;
@@ -23,7 +25,7 @@ public class Installation_Turret : MonoBehaviour
                 curIndex = pos.Count - 1;
                 continue;
             }
-            if ((pos[curIndex].curTurret != curTurret && pos[curIndex].curTurret != null) || pos[curIndex].level == maxLevel)
+            if ((pos[curIndex].curTurretIndex != turretIndex && pos[curIndex].curTurret != null) || pos[curIndex].level == maxLevel)
             {
                 curIndex--;
                 continue;
@@ -44,8 +46,9 @@ public class Installation_Turret : MonoBehaviour
     public void Choice()
     {
         if(pos[curIndex].curTurret == null) {
-            var temp = Instantiate(curTurret, pos[curIndex].transform.position, Quaternion.identity);
+            var temp = Instantiate(turretPrefab[turretIndex], pos[curIndex].transform.position, Quaternion.identity);
             pos[curIndex].curTurret = temp;
+            pos[curIndex].curTurretIndex = turretIndex;
         }else if(pos[curIndex].level != maxLevel){
             pos[curIndex].level++;
             pos[curIndex].Init(pos[curIndex].level);
@@ -65,7 +68,7 @@ public class Installation_Turret : MonoBehaviour
                 curIndex = pos.Count - 1;
                 continue;
             }
-            if ((pos[curIndex].curTurret != curTurret && pos[curIndex].curTurret != null)|| pos[curIndex].level == maxLevel)
+            if ((pos[curIndex].curTurretIndex != turretIndex && pos[curIndex].curTurret != null) || pos[curIndex].level == maxLevel)
             {
                 curIndex--;
                 continue;
@@ -86,7 +89,7 @@ public class Installation_Turret : MonoBehaviour
                 curIndex = 0;
                 continue;
             }
-            if ((pos[curIndex].curTurret != curTurret && pos[curIndex].curTurret != null) || pos[curIndex].level == maxLevel)
+            if ((pos[curIndex].curTurretIndex != turretIndex && pos[curIndex].curTurret != null) || pos[curIndex].level == maxLevel)
             {
                 curIndex++;
                 continue;
