@@ -14,18 +14,23 @@ public class Player : MonoBehaviour
     public GameObject coinMagent;
 
     [SerializeField] private float radius;
+    private Animator anim;
 
     [HideInInspector] public Rigidbody2D rigid;
     public bool isNotActive;
 
     private void Awake() {
+        anim = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
         _instance = this;
     }
 
     void Update()
     {
-        if(isNotActive) return;
+        if(isNotActive) {
+            anim.SetBool("isWalk", false);
+            return;
+        }
 
         PlayerMove();
         if(Input.GetKeyDown(KeyCode.E)) ItemCheck();
@@ -36,7 +41,17 @@ public class Player : MonoBehaviour
         float _inputX = Input.GetAxisRaw("Horizontal");
         float _inputY = Input.GetAxisRaw("Vertical");
 
+
+        if(_inputX != 0 || _inputY != 0) anim.SetBool("isWalk", true);
+        else anim.SetBool("isWalk", false);
+
+        if(_inputX < 0) GetComponent<SpriteRenderer>().flipX = true;
+        else if(_inputX > 0) GetComponent<SpriteRenderer>().flipX = false;
+
         Vector2 _Vec = new Vector2(_inputX, _inputY).normalized;
+        Vector3 localPosition = new Vector3(Mathf.Clamp(transform.position.x, -18.5f, 18.5f),
+            Mathf.Clamp(transform.position.y, -10.18f, 8.69f), 0f);
+        transform.localPosition = localPosition;
         rigid.velocity = _Vec * playerSpeed;
     }
 

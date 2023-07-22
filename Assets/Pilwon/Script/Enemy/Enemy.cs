@@ -25,13 +25,15 @@ public class Enemy : EnemyBase
     {
         Vector2 enemyDir = attTarget.transform.position - this.transform.position;
         rigid.velocity = enemyDir.normalized * moveSpeed;
+        if(rigid.velocity.x > 0) GetComponent<SpriteRenderer>().flipX = true;
+        else if(rigid.velocity.x < 0) GetComponent<SpriteRenderer>().flipX = false;
     }
 
     void OnCollisionEnter2D(Collision2D collison)
     {
         if(collison.gameObject.CompareTag("Tower"))
         {
-            //타워 체력 까기
+            collison.collider.GetComponent<Tower>().Damage();
             DieDestroy();
         }
     }

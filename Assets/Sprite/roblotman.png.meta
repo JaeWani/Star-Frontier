@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: da32a818cb87b644eb8e4d52f7c41d32
+guid: cb68321854f451242941a1ef860125fa
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: explosion_0
+      name: roblotman_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 68
-        height: 66
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67503b4fe7ca6e248a525ba0072d43de
-      internalID: -1643402120
+      spriteID: e69d655896eaa314da6b9fed35ab9f12
+      internalID: 74847253
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_1
+      name: roblotman_1
       rect:
         serializedVersion: 2
-        x: 68
+        x: 64
         y: 0
-        width: 68
-        height: 66
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 41d02f5b7a6214543a00925266c50b5e
-      internalID: -1296148110
+      spriteID: 4f2e780af94d1b54ea3384f1ce7ff56e
+      internalID: -1862596303
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_2
+      name: roblotman_2
       rect:
         serializedVersion: 2
-        x: 136
+        x: 128
         y: 0
-        width: 68
-        height: 66
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dcc5bab83a1312345bcc933b43106ed9
-      internalID: 675751871
+      spriteID: 59b75861e05c1da44b77c0b47a2cb044
+      internalID: 1100415068
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_3
+      name: roblotman_3
       rect:
         serializedVersion: 2
-        x: 204
+        x: 192
         y: 0
-        width: 68
-        height: 66
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,20 +182,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2bd02c84dda89b44dbda692bb444b15b
-      internalID: 834254997
+      spriteID: 3ef8c57c911ac2a439488901b0de3710
+      internalID: 1733431706
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_4
+      name: roblotman_4
       rect:
         serializedVersion: 2
-        x: 272
+        x: 256
         y: 0
-        width: 68
-        height: 66
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,20 +203,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3b5aa1d17f5dbd5468b35c16524aef5a
-      internalID: 1678727691
+      spriteID: e1da853f16695eb40a4db8911882c7d5
+      internalID: -361864226
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_5
+      name: roblotman_5
       rect:
         serializedVersion: 2
-        x: 340
+        x: 320
         y: 0
-        width: 68
-        height: 66
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,8 +224,134 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4e32c39ce77b2b47942060fcd812ec2
-      internalID: -1348390452
+      spriteID: a0a6bba1eb26f7645a75f52c8dad5e48
+      internalID: -1626343475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roblotman_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73d323758bc602d4182808fceabdff86
+      internalID: -1815539984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roblotman_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6055c63042fd1b0498e94893f3f7f00b
+      internalID: -642263984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roblotman_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9131b1e6cdcf4204f94bea59cefb5225
+      internalID: 1324923262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roblotman_9
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d23e44dd2b939b9408f9ee2b2d3ca933
+      internalID: 1345622625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roblotman_10
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 641e63b18a6f31b49befce2cdc926be3
+      internalID: -196139994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roblotman_11
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c743ef372e448ee408c51d79833b1705
+      internalID: 1011609958
       vertices: []
       indices: 
       edges: []
@@ -241,12 +367,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      explosion_0: -1643402120
-      explosion_1: -1296148110
-      explosion_2: 675751871
-      explosion_3: 834254997
-      explosion_4: 1678727691
-      explosion_5: -1348390452
+      roblotman_0: 74847253
+      roblotman_1: -1862596303
+      roblotman_10: -196139994
+      roblotman_11: 1011609958
+      roblotman_2: 1100415068
+      roblotman_3: 1733431706
+      roblotman_4: -361864226
+      roblotman_5: -1626343475
+      roblotman_6: -1815539984
+      roblotman_7: -642263984
+      roblotman_8: 1324923262
+      roblotman_9: 1345622625
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

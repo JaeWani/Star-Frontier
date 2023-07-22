@@ -24,8 +24,8 @@ public class GameTurnManager : MonoBehaviour
 
     [Header("# TurnMgr UI Info")]
     [SerializeField] private Camera mainCam;
+    [SerializeField] private Text timer;
     [SerializeField] private Button waveStart_Btn;
-    [SerializeField] private Text text;
     [SerializeField] private E_SpawnManager spawn;
     private float curTime;
 
@@ -50,6 +50,9 @@ public class GameTurnManager : MonoBehaviour
 
     void GameWave()
     {
+        if(isBreakTime) timer.text = new string(waitTime + " : " + (int)curTime);
+        else timer.text = new string(wave[curWave].maxSpawnTime + " : " + (int)curTime);
+
         if (curWave >= wave.Length)
         {
             Debug.Log("웨이브 끝");
@@ -76,7 +79,7 @@ public class GameTurnManager : MonoBehaviour
         mainCam.orthographicSize = 5;
     }
 
-    void GameWaveStart()
+    public void GameWaveStart()
     {
         player.transform.position = new Vector3(0, 0);
         player.rigid.velocity = new Vector2(0, 0);

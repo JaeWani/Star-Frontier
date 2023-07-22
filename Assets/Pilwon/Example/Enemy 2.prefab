@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2265822008407718622}
   - component: {fileID: 2265822008407718623}
   - component: {fileID: 2265822008407718621}
+  - component: {fileID: 488861468998597395}
   m_Layer: 0
   m_Name: Enemy 2
   m_TagString: Enemy
@@ -76,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5ce5eef928c73ef49bb6e4e1bfdc9599, type: 3}
-  m_Color: {r: 0.15471691, g: 0.44894883, b: 1, a: 1}
+  m_Sprite: {fileID: 74847253, guid: cb68321854f451242941a1ef860125fa, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -104,7 +105,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.78125, y: 0.78125}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 0.78125, y: 0.78125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -148,8 +149,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attTarget: {fileID: 0}
   coin: {fileID: 7611253504287922147, guid: 7da73ba4dad0eb4458b0d11a5cecdb5a, type: 3}
-  hp: 0
-  moveSpeed: 1
+  hp: 8
   att: 0
+  moveSpeed: 0.7
   enemyAttDelay: 0
   enemyGold: 0
+--- !u!95 &488861468998597395
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2265822008407718610}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f6d17df1d1cfd1b4fbb48f0a4dacff4a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

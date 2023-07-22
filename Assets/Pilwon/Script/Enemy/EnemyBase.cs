@@ -10,16 +10,15 @@ public abstract class EnemyBase : MonoBehaviour
     [SerializeField] protected GameObject attTarget;
     [SerializeField] protected GameObject coin;
     [SerializeField] protected int hp;
-    [SerializeField] protected int moveSpeed;
-    [SerializeField] protected int att;
-    [SerializeField] protected float enemyAttDelay;
-    [SerializeField] protected int enemyGold;
+    [SerializeField] protected float moveSpeed;
     public Action dieAction;
-    Animator anim;
+    protected Animator anim;
     bool isDie;
 
     protected virtual void Start()
     {
+        hp += GameTurnManager.instance.curWave * 2;
+        moveSpeed += GameTurnManager.instance.curWave / 2;
         anim = GetComponent<Animator>();
         dieAction += DieDestroy;
     }
@@ -27,12 +26,24 @@ public abstract class EnemyBase : MonoBehaviour
     public virtual void Damage(int damage)
     {
         hp -= damage;
+        StartCoroutine(alpha(GetComponent<SpriteRenderer>(), 1));
 
         if (hp <= 0)
         {
             if(isDie) return;
             isDie = true;
             dieAction?.Invoke();
+        }
+    }
+
+    IEnumerator alpha(SpriteRenderer image, int sec)
+    {
+        float timer = 0.5f;
+        while (timer <= sec)
+        {
+            image.color = new Color(1, 1, 1, timer / sec);
+            timer += Time.deltaTime;
+            yield return null;
         }
     }
 

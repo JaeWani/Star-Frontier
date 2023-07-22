@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: da32a818cb87b644eb8e4d52f7c41d32
+guid: 1fe801df365d5eb42b7b4470294a5052
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: explosion_0
+      name: huamne_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 68
-        height: 66
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67503b4fe7ca6e248a525ba0072d43de
-      internalID: -1643402120
+      spriteID: 4ac1467e144874d45a7ed700b7d46cd6
+      internalID: 1367810271
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_1
+      name: huamne_1
       rect:
         serializedVersion: 2
-        x: 68
+        x: 64
         y: 0
-        width: 68
-        height: 66
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 41d02f5b7a6214543a00925266c50b5e
-      internalID: -1296148110
+      spriteID: 0e13aa0789f27d24abb852e362a52822
+      internalID: 940830364
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_2
+      name: huamne_2
       rect:
         serializedVersion: 2
-        x: 136
+        x: 128
         y: 0
-        width: 68
-        height: 66
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dcc5bab83a1312345bcc933b43106ed9
-      internalID: 675751871
+      spriteID: 49c2ffd2bcaa22b4691a40f6d006ce54
+      internalID: 1379322012
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_3
+      name: huamne_3
       rect:
         serializedVersion: 2
-        x: 204
+        x: 192
         y: 0
-        width: 68
-        height: 66
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,20 +182,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2bd02c84dda89b44dbda692bb444b15b
-      internalID: 834254997
+      spriteID: 5106b10e5de562247999f761d0abf254
+      internalID: -374529014
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_4
+      name: huamne_4
       rect:
         serializedVersion: 2
-        x: 272
+        x: 256
         y: 0
-        width: 68
-        height: 66
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,20 +203,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3b5aa1d17f5dbd5468b35c16524aef5a
-      internalID: 1678727691
+      spriteID: a2082c1dfa192664db18c231ada7783f
+      internalID: 1012888798
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_5
+      name: huamne_5
       rect:
         serializedVersion: 2
-        x: 340
+        x: 320
         y: 0
-        width: 68
-        height: 66
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,8 +224,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4e32c39ce77b2b47942060fcd812ec2
-      internalID: -1348390452
+      spriteID: bf32bc5deae6eaf459b952e07f30ae4b
+      internalID: 1084194655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: huamne_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b40dfb1d9f78b494d93fc0a7da032445
+      internalID: -811059606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: huamne_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2991ecd46eccb134ab62c5ab69c04299
+      internalID: 425597944
       vertices: []
       indices: 
       edges: []
@@ -241,12 +283,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      explosion_0: -1643402120
-      explosion_1: -1296148110
-      explosion_2: 675751871
-      explosion_3: 834254997
-      explosion_4: 1678727691
-      explosion_5: -1348390452
+      huamne_0: 1367810271
+      huamne_1: 940830364
+      huamne_2: 1379322012
+      huamne_3: -374529014
+      huamne_4: 1012888798
+      huamne_5: 1084194655
+      huamne_6: -811059606
+      huamne_7: 425597944
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

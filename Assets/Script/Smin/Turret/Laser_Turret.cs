@@ -10,7 +10,7 @@ public class Laser_Turret : Turret_Base
         {
             Fire();
         }
-        else cur_delay += Time.deltaTime;
+        else if(!GameTurnManager.instance.isBreakTime) cur_delay += Time.deltaTime;
     }
 
     private void Fire()

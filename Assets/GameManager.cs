@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
+    public void Die(){
+
+    }
+
     private void Update() {
         goldText.text = new string(playerMoney + "");
     }
