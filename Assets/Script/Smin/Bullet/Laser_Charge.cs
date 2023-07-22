@@ -28,6 +28,7 @@ public class Laser_Charge : MonoBehaviour
 
         yield return new WaitForSeconds(shot_delay);
 
+        SoundManager.Instance.Sound(SoundManager.Instance.soundList[3], false, 1);
         laser.SetActive(true);
 
         yield return new WaitForSeconds(shot_time);

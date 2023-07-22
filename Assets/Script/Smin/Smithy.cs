@@ -23,6 +23,7 @@ public class Smithy : MonoBehaviour
     public void Turret()
     {
         if(GameManager.instance.playerMoney - pay >= 0) GameManager.instance.playerMoney -= pay;
+        else return;
         InitText();
         window.SetActive(false);
         turret.Init(0);
@@ -31,6 +32,7 @@ public class Smithy : MonoBehaviour
     public void Explosion_Turret()
     {
         if(GameManager.instance.playerMoney - pay >= 0) GameManager.instance.playerMoney -= pay;
+        else return;
         InitText();
         window.SetActive(false);
         turret.Init(1);
@@ -39,6 +41,7 @@ public class Smithy : MonoBehaviour
     public void Laser_Turret()
     {
         if(GameManager.instance.playerMoney - pay >= 0) GameManager.instance.playerMoney -= pay;
+        else return;
         InitText();
         window.SetActive(false);
         turret.Init(2);

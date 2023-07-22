@@ -4,18 +4,31 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager instance{get; private set;}
+    private static SoundManager _instance = null;
+    public static SoundManager Instance => _instance;
+
+    public List<AudioClip> mList = new List<AudioClip>();
+    public List<AudioClip> soundList = new List<AudioClip>();
+    GameObject curBGM;
 
     void Awake()
     {
-        if(instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else if(instance != this)
-        {
-            Destroy(gameObject);
+        _instance = this;
+        Sound(mList[0], true, 1);
+    }
+
+    public void Sound(AudioClip clip, bool isLoop, float volume){
+        GameObject obj = new GameObject("obj");
+        AudioSource audio = obj.AddComponent<AudioSource>();
+        audio.clip = clip;
+        audio.loop = isLoop;
+        audio.volume = volume;
+        audio.Play();
+
+        if(!isLoop) Destroy(obj, clip.length);
+        else {
+            if(curBGM != null) Destroy(curBGM);
+            curBGM = obj;
         }
     }
 }

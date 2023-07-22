@@ -21,6 +21,7 @@ public class GameTurnManager : MonoBehaviour
     [Header("# TurnMgr Info")]
     public int curWave = 0;
     public bool isBreakTime;
+    bool isEnd;
 
     [Header("# TurnMgr UI Info")]
     [SerializeField] private Camera mainCam;
@@ -50,12 +51,15 @@ public class GameTurnManager : MonoBehaviour
 
     void GameWave()
     {
+        if(isEnd) return;
+
         if(isBreakTime) timer.text = new string(waitTime + " : " + (int)curTime);
         else timer.text = new string(wave[curWave].maxSpawnTime + " : " + (int)curTime);
 
         if (curWave >= wave.Length)
         {
-            Debug.Log("웨이브 끝");
+            GameManager.instance.End(false);
+            isEnd = true;
             return;
         }
 

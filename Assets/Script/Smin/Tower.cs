@@ -12,7 +12,7 @@ public class Tower : MonoBehaviour
         hp--;
         StartCoroutine(alpha(damage_ui, 1));
         if(hp >= 0){
-            GameManager.instance.Die();
+            GameManager.instance.End(true);
         }
     }
 
