@@ -73,8 +73,11 @@ public class Installation_Turret : MonoBehaviour
             pos[curIndex].Init(pos[curIndex].level);
         }
         arrow.SetActive(false);
-        Player.Instance.transform.position = new Vector3(0, -4);
-        Player.Instance.isNotActive = false;
+        if (GameTurnManager.instance.isBreakTime)
+        {
+            Player.Instance.transform.position = new Vector3(0, -4);
+            Player.Instance.isNotActive = false;
+        }
         isChoice = false;
         isChange = false;
     }
