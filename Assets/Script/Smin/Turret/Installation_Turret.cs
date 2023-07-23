@@ -76,8 +76,11 @@ public class Installation_Turret : MonoBehaviour
         }
         SoundManager.Instance.SoundInt(5, 0.5f, 0.9f);
         arrow.SetActive(false);
-        Player.Instance.transform.position = new Vector3(0, -4);
-        Player.Instance.isNotActive = false;
+        if (GameTurnManager.instance.isBreakTime)
+        {
+            Player.Instance.transform.position = new Vector3(0, -4);
+            Player.Instance.isNotActive = false;
+        }
         isChoice = false;
         isChange = false;
     }
