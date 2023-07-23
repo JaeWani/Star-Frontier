@@ -47,6 +47,7 @@ public class GameTurnManager : MonoBehaviour
     void Update()
     {
         GameWave();
+        mainCam.orthographicSize = Mathf.Lerp(mainCam.orthographicSize, isBreakTime ? 5:11, Time.deltaTime * 15);
     }
 
     void GameWave()
@@ -80,7 +81,6 @@ public class GameTurnManager : MonoBehaviour
         player.isNotActive = false;
         isBreakTime = true;
         breakTimeObj.SetActive(true);
-        mainCam.orthographicSize = 5;
     }
 
     public void GameWaveStart()
@@ -92,6 +92,5 @@ public class GameTurnManager : MonoBehaviour
         curTime = 0;
         isBreakTime = false;
         breakTimeObj.SetActive(false);
-        mainCam.orthographicSize = 11;
     }
 }

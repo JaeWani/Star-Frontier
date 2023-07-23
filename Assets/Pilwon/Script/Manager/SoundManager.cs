@@ -31,4 +31,18 @@ public class SoundManager : MonoBehaviour
             curBGM = obj;
         }
     }
+
+    public void SoundInt(int clip, float volume, float speed)
+    {
+        GameObject obj = new GameObject("obj");
+        AudioSource audio = obj.AddComponent<AudioSource>();
+        audio.clip = soundList[clip];
+        audio.loop = false;
+        audio.volume = volume;
+        audio.pitch = speed;
+        audio.Play();
+
+        Destroy(obj, soundList[clip].length);
+
+    }
 }

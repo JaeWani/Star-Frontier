@@ -11,6 +11,7 @@ public abstract class EnemyBase : MonoBehaviour
     [SerializeField] protected GameObject coin;
     [SerializeField] protected int hp;
     [SerializeField] protected float moveSpeed;
+    public GameObject deathEffect;
     public Action dieAction;
     protected Animator anim;
     bool isDie;
@@ -32,6 +33,7 @@ public abstract class EnemyBase : MonoBehaviour
         {
             if(isDie) return;
             isDie = true;
+            Destroy(Instantiate(deathEffect, transform.position, Quaternion.identity), 2);
             dieAction?.Invoke();
         }
     }

@@ -50,6 +50,7 @@ public class Installation_Turret : MonoBehaviour
 
     private void Update()
     {
+        arrow.SetActive(isChoice);
         if (!isChoice) return;
 
         if (Input.GetKeyDown(KeyCode.A) && !isChange) StartCoroutine(Left());
@@ -66,12 +67,14 @@ public class Installation_Turret : MonoBehaviour
             var temp = Instantiate(turretPrefab[turretIndex], pos[curIndex].transform.position + new Vector3(0, 0.45f), Quaternion.identity);
             pos[curIndex].curTurret = temp;
             pos[curIndex].curTurretIndex = turretIndex;
+            SoundManager.Instance.SoundInt(6, 1f, 1);
         }
         else if (pos[curIndex].level != maxLevel)
         {
             pos[curIndex].level++;
             pos[curIndex].Init(pos[curIndex].level);
         }
+        SoundManager.Instance.SoundInt(5, 0.5f, 0.9f);
         arrow.SetActive(false);
         Player.Instance.transform.position = new Vector3(0, -4);
         Player.Instance.isNotActive = false;
@@ -104,7 +107,7 @@ public class Installation_Turret : MonoBehaviour
             }
             break;
         }
-        yield return StartCoroutine(MoveTo(pos[curIndex].transform.position, 0.5f));
+        yield return StartCoroutine(MoveTo(pos[curIndex].transform.position, 0.1f));
         isChange = false;
     }
 
@@ -133,7 +136,7 @@ public class Installation_Turret : MonoBehaviour
             }
             break;
         }
-        yield return StartCoroutine(MoveTo(pos[curIndex].transform.position, 0.5f));
+        yield return StartCoroutine(MoveTo(pos[curIndex].transform.position, 0.1f));
         isChange = false;
     }
 

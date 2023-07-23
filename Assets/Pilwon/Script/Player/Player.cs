@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
 
     [HideInInspector] public Rigidbody2D rigid;
     public bool isNotActive;
+    public GameObject eIndicator;
 
     private void Awake() {
         anim = GetComponent<Animator>();
@@ -33,7 +34,7 @@ public class Player : MonoBehaviour
         }
 
         PlayerMove();
-        if(Input.GetKeyDown(KeyCode.E)) ItemCheck();
+        ItemCheck();
     }
 
     void PlayerMove()
@@ -66,9 +67,15 @@ public class Player : MonoBehaviour
         foreach (var item in hits)
         {
             if(item.TryGetComponent<Item>(out var use)){
-                use.Use();
-                isNotActive = true;
-            }
+                eIndicator.SetActive(true);
+                eIndicator.transform.position = transform.position + Vector3.up * (Mathf.Sin(Time.time * 2) * 0.05f + 0.5f);
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    use.Use();
+                    isNotActive = true;
+                }
+            } else
+            eIndicator.SetActive(false);
         }
     }
 }
