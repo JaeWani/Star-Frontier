@@ -42,6 +42,7 @@ public class Enemy : EnemyBase
     {
         SoundManager.Instance.Sound(SoundManager.Instance.soundList[4], false, 1);
         Instantiate(coin, transform.position, Quaternion.identity);
+        GameManager.instance.monsterKill++;
         Destroy(gameObject);
     }
 }

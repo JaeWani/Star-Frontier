@@ -21,7 +21,7 @@ public class GameTurnManager : MonoBehaviour
     [Header("# TurnMgr Info")]
     public int curWave = 0;
     public bool isBreakTime;
-    bool isEnd;
+    public bool isEnd;
 
     [Header("# TurnMgr UI Info")]
     [SerializeField] private Camera mainCam;

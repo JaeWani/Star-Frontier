@@ -5,7 +5,7 @@ using UnityEngine;
 public class E_SpawnManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> spawnPos = new List<GameObject>();
-    private float curSpawnTime;
+    public float curSpawnTime;
     public float maxSpawnTime;
 
     GameTurnManager turnMgr;
