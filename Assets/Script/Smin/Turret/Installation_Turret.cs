@@ -8,6 +8,7 @@ public class Installation_Turret : MonoBehaviour
     [SerializeField] GameObject arrow;
     [SerializeField] List<Turret_Base> turretPrefab = new List<Turret_Base>();
     [SerializeField] GameObject turret_prop;
+    [SerializeField] GameObject effect;
     public int turretIndex;
 
     bool isChoice;
@@ -61,6 +62,7 @@ public class Installation_Turret : MonoBehaviour
     public void Choice()
     {
         isChange = true;
+        Instantiate(effect, pos[curIndex].transform.position, Quaternion.identity);
         if (pos[curIndex].curTurret == null)
         {
             Instantiate(turret_prop, pos[curIndex].transform.position + new Vector3(0, 0.15f), Quaternion.identity);
