@@ -54,8 +54,8 @@ public class GameTurnManager : MonoBehaviour
     {
         if(isEnd) return;
 
-        if(isBreakTime) timer.text = new string((int)curTime + " : " + waitTime);
-        else timer.text = new string((int)curTime + " : " + wave[curWave].maxSpawnTime);
+        if(isBreakTime) timer.text = new string((int)curTime + " / " + waitTime);
+        else timer.text = new string((int)curTime + " / " + wave[curWave].maxSpawnTime);
 
         if (curWave >= wave.Length)
         {

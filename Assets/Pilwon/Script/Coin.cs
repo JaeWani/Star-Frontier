@@ -49,6 +49,7 @@ public class Coin : MonoBehaviour
             yield return null;
         }
         GameManager.instance.playerMoney += Mathf.RoundToInt(10 * Player.Instance.goldMultiple);
+        SoundManager.Instance.SoundInt(Random.Range(8, 9), 1, Random.Range(0.8f, 1.2f));
         Destroy(gameObject);
         yield break;
     }
