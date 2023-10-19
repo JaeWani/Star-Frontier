@@ -49,6 +49,7 @@ public class Smithy : MonoBehaviour
 
     public void Exit()
     {
+        GameTurnManager.instance.isPause = false;
         window.SetActive(false);
         if(GameTurnManager.instance.isBreakTime) player.isNotActive = false;
     }

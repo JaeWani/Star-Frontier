@@ -22,6 +22,9 @@ public class GameTurnManager : MonoBehaviour
     public int curWave = 0;
     public bool isBreakTime;
     public bool isEnd;
+    public bool isPause = false;
+
+    public float totalGameTime = 0;
 
     [Header("# TurnMgr UI Info")]
     [SerializeField] private Camera mainCam;
@@ -37,8 +40,8 @@ public class GameTurnManager : MonoBehaviour
 
     void Awake()
     {
-        if(instance == null) instance = this;
-        else if(instance != this) Destroy(gameObject);
+        if (instance == null) instance = this;
+        else if (instance != this) Destroy(gameObject);
 
         //waveStart_Btn.onClick.AddListener(() => GameWaveStart());
         breakTime();
@@ -47,14 +50,14 @@ public class GameTurnManager : MonoBehaviour
     void Update()
     {
         GameWave();
-        mainCam.orthographicSize = Mathf.Lerp(mainCam.orthographicSize, isBreakTime ? 5:11, Time.deltaTime * 15);
+        mainCam.orthographicSize = Mathf.Lerp(mainCam.orthographicSize, isBreakTime ? 5 : 11, Time.deltaTime * 15);
     }
 
     void GameWave()
     {
-        if(isEnd) return;
+        if (isEnd) return;
 
-        if(isBreakTime) timer.text = new string((int)curTime + " / " + waitTime);
+        if (isBreakTime) timer.text = new string((int)curTime + " / " + waitTime);
         else timer.text = new string((int)curTime + " / " + wave[curWave].maxSpawnTime);
 
         if (curWave >= wave.Length)
@@ -68,11 +71,16 @@ public class GameTurnManager : MonoBehaviour
         {
             curTime = 0;
             curWave++; // 다음 웨이브
+            GameManager.instance.waveNumber++;
             breakTime();
         }
 
         if (curTime > waitTime && isBreakTime) GameWaveStart();
-        curTime += Time.deltaTime;
+        if (isPause == false)
+        {
+            curTime += Time.deltaTime;
+            totalGameTime += Time.deltaTime;
+        }
     }
 
     void breakTime()

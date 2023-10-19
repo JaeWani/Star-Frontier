@@ -200,6 +200,8 @@ MonoBehaviour:
   curWave: 0
   isBreakTime: 0
   isEnd: 0
+  isPause: 0
+  totalGameTime: 0
   mainCam: {fileID: 1206572914}
   timer: {fileID: 994314650}
   waveStart_Btn: {fileID: 754946743}
@@ -554,6 +556,7 @@ Transform:
   - {fileID: 818701391}
   - {fileID: 62080452}
   - {fileID: 731986788}
+  - {fileID: 923883566}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2267,6 +2270,7 @@ MonoBehaviour:
   MainMenuBtn: {fileID: 2117583626}
   ReStartbtnU: {fileID: 1174066832}
   MainMenubtnU: {fileID: 2117583627}
+  PlayerObject: {fileID: 751792491}
   playerMoney: 100
   monsterKill: 0
 --- !u!1 &738891723
@@ -3591,6 +3595,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 906811243}
   m_CullTransparentMesh: 1
+--- !u!1 &923883565
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 923883566}
+  - component: {fileID: 923883567}
+  m_Layer: 0
+  m_Name: DifficultyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &923883566
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 923883565}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 165339943}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &923883567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 923883565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2057794d7810e074eabf739b3a1ce185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldPerDifficulty: 0a00000032000000640000002c010000
 --- !u!1 &958637568
 GameObject:
   m_ObjectHideFlags: 0

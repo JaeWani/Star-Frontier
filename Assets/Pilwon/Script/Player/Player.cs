@@ -71,6 +71,7 @@ public class Player : MonoBehaviour
                 eIndicator.transform.position = transform.position + Vector3.up * (Mathf.Sin(Time.time * 2) * 0.05f + 0.5f);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    GameTurnManager.instance.isPause = true;
                     use.Use();
                     isNotActive = true;
                 }

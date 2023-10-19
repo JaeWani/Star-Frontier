@@ -83,6 +83,7 @@ public class Installation_Turret : MonoBehaviour
             Player.Instance.transform.position = new Vector3(0, -4);
             Player.Instance.isNotActive = false;
         }
+        GameTurnManager.instance.isPause = false;
         isChoice = false;
         isChange = false;
     }

@@ -29,8 +29,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Button ReStartbtnU;
     [SerializeField] private Button MainMenubtnU;
 
+    [Header(" # Include")]
+    public GameObject PlayerObject;
+
     public int playerMoney = 100;
     public int monsterKill = 0;
+    public int waveNumber = 0;
 
     void Awake()
     {
@@ -63,7 +67,7 @@ public class GameManager : MonoBehaviour
 
             winObj.SetActive(true);
             Time.timeScale = 1;
-        } 
+        }
     }
 
     public void Home()
@@ -90,4 +94,11 @@ public class GameManager : MonoBehaviour
     {
         goldText.text = new string(playerMoney + "");
     }
+
+    /// <summary>
+    ///  골드 추가해주는 함수임
+    /// </summary>
+    public static void AddGold(int gold) => instance._AddGold(gold);
+    private void _AddGold(int gold) => playerMoney += gold;
+
 }
