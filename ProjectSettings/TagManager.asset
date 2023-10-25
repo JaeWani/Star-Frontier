@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Tower
   - CoinMagnet
+  - Speed UP Col
   layers:
   - Default
   - TransparentFX

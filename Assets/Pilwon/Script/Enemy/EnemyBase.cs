@@ -16,6 +16,13 @@ public abstract class EnemyBase : MonoBehaviour
     protected Animator anim;
     bool isDie;
 
+    private float baseMoveSpeed;
+
+    private void Awake()
+    {
+        baseMoveSpeed = moveSpeed;
+    }
+
     protected virtual void Start()
     {
         hp += GameTurnManager.instance.curWave * 2;
@@ -46,6 +53,24 @@ public abstract class EnemyBase : MonoBehaviour
             image.color = new Color(1, 1, 1, timer / sec);
             timer += Time.deltaTime;
             yield return null;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Speed UP Col"))
+        {
+            // Speed Up Col 에 닿으면 스피드 10% 증가
+            moveSpeed += baseMoveSpeed * 0.1f;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Speed UP Col"))
+        {
+            // Speed Up Col 에서 나가면 원래 스피드로 바뀜
+            moveSpeed -= baseMoveSpeed * 0.1f;
         }
     }
 
