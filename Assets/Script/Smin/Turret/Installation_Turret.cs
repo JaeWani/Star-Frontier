@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Installation_Turret : MonoBehaviour
 {
-    [SerializeField] List<Turret_Pos> pos = new List<Turret_Pos>();
+    public static Installation_Turret instance;
+
+    public List<Turret_Pos> pos = new List<Turret_Pos>();
     [SerializeField] GameObject arrow;
     [SerializeField] List<Turret_Base> turretPrefab = new List<Turret_Base>();
     [SerializeField] GameObject turret_prop;
@@ -17,6 +19,11 @@ public class Installation_Turret : MonoBehaviour
     int maxLevel = 2;
     int Count;
 
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
     public void Init(int index)
     {
         isChoice = true;

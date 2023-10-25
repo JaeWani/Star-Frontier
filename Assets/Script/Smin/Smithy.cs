@@ -24,6 +24,18 @@ public class Smithy : MonoBehaviour
     [SerializeField] private int BasicTurretPrice;
     [SerializeField] private int ExplosionTurretPrice;
     [SerializeField] private int LaserTurretPrice;
+    [SerializeField] private int PlacementSlot1Price = 300;
+    [SerializeField] private int PlacementSlot2Price = 1000;
+
+    [Header("Any")]
+    [SerializeField] private GameObject Placement_UI;
+    [SerializeField] private GameObject Placement_1;
+    [SerializeField] private Turret_Pos Placement_1_Pos;
+
+    [SerializeField] private GameObject Placement2_UI;
+    [SerializeField] private GameObject Placement_2;
+    [SerializeField] private Turret_Pos Placement_2_Pos;
+    [SerializeField] private Turret_Pos Placement_2_Pos2;
 
     private void Start()
     {
@@ -69,7 +81,27 @@ public class Smithy : MonoBehaviour
         window.SetActive(false);
         turret.Init(2);
     }
+    public void PlacementSlotUpgrade_1()
+    {
+        if (GameManager.instance.playerMoney - PlacementSlot1Price >= 0) GameManager.instance.playerMoney -= PlacementSlot1Price;
+        else return;
 
+        Placement_1.SetActive(true);
+        Installation_Turret.instance.pos.Add(Placement_1_Pos);
+        
+        Destroy(Placement_UI.gameObject);
+    }
+    public void PlacementSlotUpgrade_2()
+    {
+        if(GameManager.instance.playerMoney - PlacementSlot2Price >= 0) GameManager.instance.playerMoney -= PlacementSlot2Price;
+        else return;
+
+        Placement_2.SetActive(true);
+        Installation_Turret.instance.pos.Add(Placement_2_Pos);
+        Installation_Turret.instance.pos.Add(Placement_2_Pos2);
+
+        Destroy(Placement2_UI.gameObject);
+    }
     public void Exit()
     {
         GameTurnManager.instance.isPause = false;
