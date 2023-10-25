@@ -29,8 +29,8 @@ public class E_SpawnManager : MonoBehaviour
         {
             int _enemyNum = Random.Range(0, turnMgr.wave[turnMgr.curWave].enemy.Count);  
             int _spawnPos = Random.Range(0, 6);
-            Instantiate(turnMgr.wave[turnMgr.curWave].enemy[_enemyNum], spawnPos[_spawnPos].transform.position , Quaternion.identity);
-
+            var key = turnMgr.wave[turnMgr.curWave].enemy[_enemyNum].GetComponent<Enemy>().poolKey;
+            ObjectPoolManager.SpawnFromPool(key,spawnPos[_spawnPos].transform.position);
             curSpawnTime = 0;   
         }
     }

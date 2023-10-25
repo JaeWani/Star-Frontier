@@ -153,6 +153,7 @@ MonoBehaviour:
   moveSpeed: 0.7
   deathEffect: {fileID: 1136957122057164087, guid: ef4c1f402ae159441a03c2176c89fe8b, type: 3}
   curSize: 3
+  poolKey: BigMonster
 --- !u!95 &488861468998597395
 Animator:
   serializedVersion: 5

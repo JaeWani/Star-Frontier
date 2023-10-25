@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Enemy : EnemyBase
 {
-    
+
     public enum EnemySize
     {
-        Small = 1 ,
+        Small = 1,
         Middle,
         Big
     }
@@ -52,6 +52,8 @@ public class Enemy : EnemyBase
         var item = Instantiate(coin, transform.position, Quaternion.identity).GetComponent<Coin>();
         item.gold = DifficultyManager.instance.goldPerDifficulty[DifficultyManager.instance.indexDifficulty] * (int)curSize;
         GameManager.instance.monsterKill++;
-        Destroy(gameObject);
+        ObjectPoolManager.ReturnToPool(poolKey,gameObject);
     }
+
+    [SerializeField] public string poolKey;
 }

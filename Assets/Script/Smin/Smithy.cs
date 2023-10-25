@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Smithy : MonoBehaviour
 {
@@ -9,20 +10,42 @@ public class Smithy : MonoBehaviour
     [SerializeField] GameObject window;
     [SerializeField] Installation_Turret turret;
 
-    [SerializeField] List<Text> textList = new List<Text>();
+    [Header("Panel Button")]
+    [SerializeField] private Button ExitButton;
 
-    [SerializeField] int pay = 50;
+    [Header("Turret Buy Button")]
+    [SerializeField] private Button BasicTurretBuy;
+    [SerializeField] private Button ExplosionTurretBuy;
+    [SerializeField] private Button LaserTurretBuy;
 
-    private void InitText(){
-        pay = Mathf.RoundToInt(pay * 1.2f);
-        textList[0].text = new string("Turret : " + pay + "Coin");
-        textList[1].text = new string("Explosion : " + pay + "Coin");
-        textList[2].text = new string("Laser : " + pay + "Coin");
+    [SerializeField] private List<TextMeshProUGUI> textList = new List<TextMeshProUGUI>();
+
+    [Header("Turret Price")]
+    [SerializeField] private int BasicTurretPrice;
+    [SerializeField] private int ExplosionTurretPrice;
+    [SerializeField] private int LaserTurretPrice;
+
+    private void Start()
+    {
+        BasicTurretBuy.onClick.AddListener(() => Turret());
+        ExplosionTurretBuy.onClick.AddListener(() => Explosion_Turret());
+        LaserTurretBuy.onClick.AddListener(() => Laser_Turret());
+
+        ExitButton.onClick.AddListener(() => Exit());
+
+        InitText();
+    }
+
+    private void InitText()
+    {
+        textList[0].text = new string(BasicTurretPrice.ToString());
+        textList[1].text = new string(ExplosionTurretPrice.ToString());
+        textList[2].text = new string(LaserTurretPrice.ToString());
     }
 
     public void Turret()
     {
-        if(GameManager.instance.playerMoney - pay >= 0) GameManager.instance.playerMoney -= pay;
+        if (GameManager.instance.playerMoney - BasicTurretPrice >= 0) GameManager.instance.playerMoney -= BasicTurretPrice;
         else return;
         InitText();
         window.SetActive(false);
@@ -31,7 +54,7 @@ public class Smithy : MonoBehaviour
 
     public void Explosion_Turret()
     {
-        if(GameManager.instance.playerMoney - pay >= 0) GameManager.instance.playerMoney -= pay;
+        if (GameManager.instance.playerMoney - ExplosionTurretPrice >= 0) GameManager.instance.playerMoney -= ExplosionTurretPrice;
         else return;
         InitText();
         window.SetActive(false);
@@ -40,7 +63,7 @@ public class Smithy : MonoBehaviour
 
     public void Laser_Turret()
     {
-        if(GameManager.instance.playerMoney - pay >= 0) GameManager.instance.playerMoney -= pay;
+        if (GameManager.instance.playerMoney - LaserTurretPrice >= 0) GameManager.instance.playerMoney -= LaserTurretPrice;
         else return;
         InitText();
         window.SetActive(false);
@@ -51,6 +74,6 @@ public class Smithy : MonoBehaviour
     {
         GameTurnManager.instance.isPause = false;
         window.SetActive(false);
-        if(GameTurnManager.instance.isBreakTime) player.isNotActive = false;
+        if (GameTurnManager.instance.isBreakTime) player.isNotActive = false;
     }
 }
