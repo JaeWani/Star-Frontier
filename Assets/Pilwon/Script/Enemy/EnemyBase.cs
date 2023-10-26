@@ -17,12 +17,16 @@ public abstract class EnemyBase : MonoBehaviour
     protected Animator anim;
     bool isDie;
 
+    private Material _material;
+
     private float baseMoveSpeed;
 
     private void Awake()
     {
         baseMoveSpeed = moveSpeed;
         dieAction += DieDestroy;
+
+        _material = GetComponent<SpriteRenderer>().material;
     }
 
     private void OnEnable() 
@@ -30,10 +34,11 @@ public abstract class EnemyBase : MonoBehaviour
         hp = maxHP * GameTurnManager.instance.curWave * 2;
         moveSpeed += GameTurnManager.instance.curWave / 2;
         
+        
     }
     protected virtual void Start()
     {
-        
+        StartCoroutine(DissolveShow());
     }
 
     public virtual void Damage(int damage)
@@ -76,6 +81,18 @@ public abstract class EnemyBase : MonoBehaviour
         {
             // Speed Up Col 에서 나가면 원래 스피드로 바뀜
             moveSpeed -= baseMoveSpeed * 0.1f;
+        }
+    }
+
+    private IEnumerator DissolveShow()
+    {
+        float count = 1;
+
+        while (count > 0)
+        {
+            _material.SetFloat("_DissolveAmount", count);
+            count -= Time.deltaTime;
+            yield return null;
         }
     }
 
