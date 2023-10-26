@@ -150,6 +150,7 @@ MonoBehaviour:
   attTarget: {fileID: 0}
   coin: {fileID: 7611253504287922147, guid: 7da73ba4dad0eb4458b0d11a5cecdb5a, type: 3}
   hp: 4
+  maxHP: 4
   moveSpeed: 1
   deathEffect: {fileID: 1136957122057164087, guid: ef4c1f402ae159441a03c2176c89fe8b, type: 3}
   curSize: 1

@@ -10,6 +10,7 @@ public abstract class EnemyBase : MonoBehaviour
     [SerializeField] protected GameObject attTarget;
     [SerializeField] protected GameObject coin;
     [SerializeField] protected int hp;
+    [SerializeField] protected int maxHP;
     [SerializeField] protected float moveSpeed;
     public GameObject deathEffect;
     public Action dieAction;
@@ -21,14 +22,18 @@ public abstract class EnemyBase : MonoBehaviour
     private void Awake()
     {
         baseMoveSpeed = moveSpeed;
+        dieAction += DieDestroy;
     }
 
+    private void OnEnable() 
+    {
+        hp = maxHP * GameTurnManager.instance.curWave * 2;
+        moveSpeed += GameTurnManager.instance.curWave / 2;
+        
+    }
     protected virtual void Start()
     {
-        hp += GameTurnManager.instance.curWave * 2;
-        moveSpeed += GameTurnManager.instance.curWave / 2;
-        anim = GetComponent<Animator>();
-        dieAction += DieDestroy;
+        
     }
 
     public virtual void Damage(int damage)

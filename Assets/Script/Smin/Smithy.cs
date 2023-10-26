@@ -28,10 +28,12 @@ public class Smithy : MonoBehaviour
     [SerializeField] private int PlacementSlot2Price = 1000;
 
     [Header("Any")]
+    [SerializeField] private Button Placement_Btn;
     [SerializeField] private GameObject Placement_UI;
     [SerializeField] private GameObject Placement_1;
     [SerializeField] private Turret_Pos Placement_1_Pos;
 
+    [SerializeField] private Button Placement2_Btn;
     [SerializeField] private GameObject Placement2_UI;
     [SerializeField] private GameObject Placement_2;
     [SerializeField] private Turret_Pos Placement_2_Pos;
@@ -42,6 +44,8 @@ public class Smithy : MonoBehaviour
         BasicTurretBuy.onClick.AddListener(() => Turret());
         ExplosionTurretBuy.onClick.AddListener(() => Explosion_Turret());
         LaserTurretBuy.onClick.AddListener(() => Laser_Turret());
+        Placement_Btn.onClick.AddListener(() => PlacementSlotUpgrade_1());
+        Placement2_Btn.onClick.AddListener(() => PlacementSlotUpgrade_2());
 
         ExitButton.onClick.AddListener(() => Exit());
 
@@ -88,7 +92,7 @@ public class Smithy : MonoBehaviour
 
         Placement_1.SetActive(true);
         Installation_Turret.instance.pos.Add(Placement_1_Pos);
-        
+        Exit();
         Destroy(Placement_UI.gameObject);
     }
     public void PlacementSlotUpgrade_2()
@@ -99,7 +103,7 @@ public class Smithy : MonoBehaviour
         Placement_2.SetActive(true);
         Installation_Turret.instance.pos.Add(Placement_2_Pos);
         Installation_Turret.instance.pos.Add(Placement_2_Pos2);
-
+        Exit();
         Destroy(Placement2_UI.gameObject);
     }
     public void Exit()
