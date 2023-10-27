@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class Smithy : MonoBehaviour
 {
@@ -10,8 +11,14 @@ public class Smithy : MonoBehaviour
     [SerializeField] GameObject window;
     [SerializeField] Installation_Turret turret;
 
+    [Header ("Panel Rect")] 
+    [SerializeField] private RectTransform SmithyPanelRect;
+    [SerializeField] private RectTransform UpgradePanelRect;
+
     [Header("Panel Button")]
     [SerializeField] private Button ExitButton;
+    [SerializeField] private Button PanelChangeButton;
+
 
     [Header("Turret Buy Button")]
     [SerializeField] private Button BasicTurretBuy;
