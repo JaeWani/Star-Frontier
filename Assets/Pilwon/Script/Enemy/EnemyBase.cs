@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public abstract class EnemyBase : MonoBehaviour
 {
     // 적의 공통점 : 체력, 움직임속도, 공격력, 공격딜레이, 공격타겟
@@ -16,8 +17,7 @@ public abstract class EnemyBase : MonoBehaviour
     public Action dieAction;
     protected Animator anim;
     bool isDie;
-
-    private Material _material;
+    SpriteRenderer spr;
 
     private float baseMoveSpeed;
 
@@ -25,32 +25,34 @@ public abstract class EnemyBase : MonoBehaviour
     {
         baseMoveSpeed = moveSpeed;
         dieAction += DieDestroy;
-
-        _material = GetComponent<SpriteRenderer>().material;
     }
 
-    private void OnEnable() 
+    private void OnEnable()
     {
+        isDie = false;
+        spr = GetComponent<SpriteRenderer>();
         hp = maxHP * GameTurnManager.instance.curWave * 2;
         moveSpeed += GameTurnManager.instance.curWave / 2;
-        
-        
+
+        spr.color = new Color(1, 1, 1, 1);
+        StopAllCoroutines();
     }
     protected virtual void Start()
     {
-        StartCoroutine(DissolveShow());
+        spr = GetComponent<SpriteRenderer>();
     }
 
     public virtual void Damage(int damage)
     {
         hp -= damage;
-        StartCoroutine(alpha(GetComponent<SpriteRenderer>(), 1));
+        StartCoroutine(alpha(spr, 1));
 
         if (hp <= 0)
         {
-            if(isDie) return;
+            if (isDie) return;
             isDie = true;
-            Destroy(Instantiate(deathEffect, transform.position, Quaternion.identity), 2);
+            
+            ObjectPoolManager.ReturnToPool("DeathEffect",ObjectPoolManager.SpawnFromPool("DeathEffect",transform.position), 2);
             dieAction?.Invoke();
         }
     }
@@ -81,18 +83,6 @@ public abstract class EnemyBase : MonoBehaviour
         {
             // Speed Up Col 에서 나가면 원래 스피드로 바뀜
             moveSpeed -= baseMoveSpeed * 0.1f;
-        }
-    }
-
-    private IEnumerator DissolveShow()
-    {
-        float count = 1;
-
-        while (count > 0)
-        {
-            _material.SetFloat("_DissolveAmount", count);
-            count -= Time.deltaTime;
-            yield return null;
         }
     }
 

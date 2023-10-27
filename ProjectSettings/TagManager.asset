@@ -8,6 +8,7 @@ TagManager:
   - Tower
   - CoinMagnet
   - Speed UP Col
+  - Bullet
   layers:
   - Default
   - TransparentFX

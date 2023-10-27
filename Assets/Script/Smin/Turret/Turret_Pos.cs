@@ -6,6 +6,7 @@ using UnityEngine;
 [Serializable]
 public class Turret_Pos : MonoBehaviour
 {
+    
     public Turret_Base curTurret;
     public int curTurretIndex;
     public int level;

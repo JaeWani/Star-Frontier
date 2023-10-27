@@ -68,29 +68,38 @@ public class Smithy : MonoBehaviour
 
     public void Turret()
     {
-        if (GameManager.instance.playerMoney - BasicTurretPrice >= 0) GameManager.instance.playerMoney -= BasicTurretPrice;
-        else return;
-        InitText();
-        window.SetActive(false);
-        turret.Init(0);
+        if (Installation_Turret.instance.Check_PullTurret())
+        {
+            if (GameManager.instance.playerMoney - BasicTurretPrice >= 0) GameManager.instance.playerMoney -= BasicTurretPrice;
+            else return;
+            InitText();
+            window.SetActive(false);
+            turret.Init(0);
+        }
     }
 
     public void Explosion_Turret()
     {
-        if (GameManager.instance.playerMoney - ExplosionTurretPrice >= 0) GameManager.instance.playerMoney -= ExplosionTurretPrice;
-        else return;
-        InitText();
-        window.SetActive(false);
-        turret.Init(1);
+        if (Installation_Turret.instance.Check_PullTurret())
+        {
+            if (GameManager.instance.playerMoney - ExplosionTurretPrice >= 0) GameManager.instance.playerMoney -= ExplosionTurretPrice;
+            else return;
+            InitText();
+            window.SetActive(false);
+            turret.Init(1);
+        }
     }
 
     public void Laser_Turret()
     {
-        if (GameManager.instance.playerMoney - LaserTurretPrice >= 0) GameManager.instance.playerMoney -= LaserTurretPrice;
-        else return;
-        InitText();
-        window.SetActive(false);
-        turret.Init(2);
+        if (Installation_Turret.instance.Check_PullTurret())
+        {
+            if (GameManager.instance.playerMoney - LaserTurretPrice >= 0) GameManager.instance.playerMoney -= LaserTurretPrice;
+            else return;
+            InitText();
+            window.SetActive(false);
+            turret.Init(2);
+        }
     }
     public void PlacementSlotUpgrade_1()
     {
@@ -104,7 +113,7 @@ public class Smithy : MonoBehaviour
     }
     public void PlacementSlotUpgrade_2()
     {
-        if(GameManager.instance.playerMoney - PlacementSlot2Price >= 0) GameManager.instance.playerMoney -= PlacementSlot2Price;
+        if (GameManager.instance.playerMoney - PlacementSlot2Price >= 0) GameManager.instance.playerMoney -= PlacementSlot2Price;
         else return;
 
         Placement_2.SetActive(true);

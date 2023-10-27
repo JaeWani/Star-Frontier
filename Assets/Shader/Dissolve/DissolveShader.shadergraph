@@ -95,6 +95,9 @@
         },
         {
             "m_Id": "1fd2a06883e94a8a92f57eb37b3cfba5"
+        },
+        {
+            "m_Id": "9765eb63228b4d6e849bb71943ddeb0c"
         }
     ],
     "m_GroupDatas": [],
@@ -562,8 +565,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -2025.0001220703125,
-            "y": 579.0,
+            "x": -2145.0,
+            "y": 691.0,
             "width": 208.0,
             "height": 315.0
         }
@@ -849,6 +852,19 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Texture2DMaterialSlot",
+    "m_ObjectId": "15f90b7df238408ab56b8199843d962f",
+    "m_Id": 0,
+    "m_DisplayName": "MainTex",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_BareResource": false
 }
 
 {
@@ -1492,8 +1508,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1332.0001220703125,
-            "y": 579.0000610351563,
+            "x": -1357.0001220703125,
+            "y": 599.0000610351563,
             "width": 208.0001220703125,
             "height": 301.99993896484377
         }
@@ -2020,6 +2036,41 @@
         "m_SerializableColors": []
     },
     "m_SerializedDescriptor": "VertexDescription.Tangent"
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "9765eb63228b4d6e849bb71943ddeb0c",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -2001.0001220703125,
+            "y": 519.0,
+            "width": 129.0001220703125,
+            "height": 34.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "15f90b7df238408ab56b8199843d962f"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "d77db31ff48d481cb7ffb2ab81df3541"
+    }
 }
 
 {
@@ -2868,9 +2919,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1680.0001220703125,
-            "y": 579.0,
-            "width": 208.0,
+            "x": -1772.0001220703125,
+            "y": 519.0,
+            "width": 208.0001220703125,
             "height": 302.0
         }
     },

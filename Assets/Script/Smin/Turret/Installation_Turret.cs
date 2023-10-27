@@ -72,8 +72,10 @@ public class Installation_Turret : MonoBehaviour
         Instantiate(effect, pos[curIndex].transform.position, Quaternion.identity);
         if (pos[curIndex].curTurret == null)
         {
-            Instantiate(turret_prop, pos[curIndex].transform.position + new Vector3(0, 0.15f), Quaternion.identity);
+            var obj = Instantiate(turret_prop, pos[curIndex].transform.position + new Vector3(0, 0.15f), Quaternion.identity);
+            obj.transform.SetParent(pos[curIndex].transform);
             var temp = Instantiate(turretPrefab[turretIndex], pos[curIndex].transform.position + new Vector3(0, 0.45f), Quaternion.identity);
+            temp.transform.SetParent(pos[curIndex].transform);
             pos[curIndex].curTurret = temp;
             pos[curIndex].curTurretIndex = turretIndex;
             SoundManager.Instance.SoundInt(6, 1f, 1);
@@ -98,26 +100,30 @@ public class Installation_Turret : MonoBehaviour
     public IEnumerator Left()
     {
         isChange = true;
+
+
         curIndex--;
+
         while (true)
         {
-            Count++;
-            if (Count > 100)
-            {
-                Debug.Log("left");
-                yield break;
-            }
+            
             yield return null;
             if (curIndex < 0)
             {
                 curIndex = pos.Count - 1;
                 continue;
             }
-            if ((pos[curIndex].curTurretIndex != turretIndex && pos[curIndex].curTurret != null) || pos[curIndex].level == maxLevel)
+            if ((pos[curIndex].curTurretIndex != turretIndex && pos[curIndex].curTurret != null) || pos[curIndex].level == maxLevel) // 다른 포탑 놨거나 만렙인 경우 다음으로 넘어가고
             {
                 curIndex--;
                 continue;
             }
+            if (pos[curIndex].curTurret != null)
+            {
+                curIndex--;
+                continue;
+            }
+
             break;
         }
         yield return StartCoroutine(MoveTo(pos[curIndex].transform.position, 0.1f));
@@ -130,12 +136,7 @@ public class Installation_Turret : MonoBehaviour
         curIndex++;
         while (true)
         {
-            Count++;
-            if (Count > 100)
-            {
-                Debug.Log("left");
-                yield break;
-            }
+        
             yield return null;
             if (curIndex > pos.Count - 1)
             {
@@ -143,6 +144,11 @@ public class Installation_Turret : MonoBehaviour
                 continue;
             }
             if ((pos[curIndex].curTurretIndex != turretIndex && pos[curIndex].curTurret != null) || pos[curIndex].level == maxLevel)
+            {
+                curIndex++;
+                continue;
+            }
+            if(pos[curIndex].curTurret != null)
             {
                 curIndex++;
                 continue;
@@ -168,4 +174,14 @@ public class Installation_Turret : MonoBehaviour
 
         yield break;
     }
+    public bool Check_PullTurret()
+    {
+        int num = 0;
+        foreach(var item in pos)
+            if(item.curTurret == null) num++;
+            
+        if(num == 0) return false;
+        else return true;
+    }
+
 }

@@ -46,6 +46,7 @@ public class Enemy : EnemyBase
         }
     }
 
+    [SerializeField] public string poolKey;
     protected override void DieDestroy()
     {
         SoundManager.Instance.Sound(SoundManager.Instance.soundList[4], false, 1);
@@ -53,7 +54,7 @@ public class Enemy : EnemyBase
         item.gold = DifficultyManager.instance.goldPerDifficulty[DifficultyManager.instance.indexDifficulty] * (int)curSize;
         GameManager.instance.monsterKill++;
         ObjectPoolManager.ReturnToPool(poolKey,gameObject);
+        StopAllCoroutines();
     }
 
-    [SerializeField] public string poolKey;
 }

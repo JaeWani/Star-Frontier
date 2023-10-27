@@ -73,11 +73,10 @@ public class ObjectPoolManager : MonoBehaviour
         }
     }
 
-    private void _SpawnFromPool(string key, Vector2 position)
+    private GameObject _SpawnFromPool(string key, Vector2 position)
     {
-        Debug.Log("Spawn");
         var poolQueue = poolObject[key];
-        _CreatNewObject(key,poolQueue);
+        _CreatNewObject(key, poolQueue);
 
         var obj = poolQueue.Dequeue();
 
@@ -86,11 +85,13 @@ public class ObjectPoolManager : MonoBehaviour
         obj.transform.SetParent(null);
 
         obj.SetActive(true);
+
+        return obj;
     }
-    private void _SpawnFromPool(string key, Vector2 position, Transform parent)
+    private GameObject _SpawnFromPool(string key, Vector2 position, Transform parent)
     {
         var poolQueue = poolObject[key];
-        _CreatNewObject(key,poolQueue);
+        _CreatNewObject(key, poolQueue);
 
         var obj = poolQueue.Dequeue();
 
@@ -99,11 +100,13 @@ public class ObjectPoolManager : MonoBehaviour
         obj.transform.SetParent(parent);
 
         obj.SetActive(true);
+
+        return obj;
     }
-    private void _SpawnFromPool(string key, Vector2 position, Quaternion quaternion)
+    private GameObject _SpawnFromPool(string key, Vector2 position, Quaternion quaternion)
     {
         var poolQueue = poolObject[key];
-        _CreatNewObject(key,poolQueue);
+        _CreatNewObject(key, poolQueue);
 
         var obj = poolQueue.Dequeue();
 
@@ -111,11 +114,13 @@ public class ObjectPoolManager : MonoBehaviour
         obj.transform.rotation = quaternion;
 
         obj.SetActive(true);
+
+        return obj;
     }
-    private void _SpawnFromPool(string key, Vector2 position, Transform parent, Quaternion quaternion)
+    private GameObject _SpawnFromPool(string key, Vector2 position, Transform parent, Quaternion quaternion)
     {
         var poolQueue = poolObject[key];
-        _CreatNewObject(key,poolQueue);
+        _CreatNewObject(key, poolQueue);
 
         var obj = poolQueue.Dequeue();
 
@@ -124,15 +129,16 @@ public class ObjectPoolManager : MonoBehaviour
         obj.transform.SetParent(parent);
 
         obj.SetActive(true);
+
+        return obj;
     }
-    public static void SpawnFromPool(string key, Vector2 position) => instance._SpawnFromPool(key, position);
-    public static void SpawnFromPool(string key, Vector2 position, Transform parent) => instance._SpawnFromPool(key, position, parent);
-    public static void SpawnFromPool(string key, Vector2 position, Quaternion quaternion) => instance._SpawnFromPool(key, position, quaternion);
-    public static void SpawnFromPool(string key, Vector2 position, Transform parent, Quaternion quaternion) => instance._SpawnFromPool(key, position, parent, quaternion);
+    public static GameObject SpawnFromPool(string key, Vector2 position) { return instance._SpawnFromPool(key, position); }
+    public static GameObject SpawnFromPool(string key, Vector2 position, Transform parent) { return instance._SpawnFromPool(key, position, parent); }
+    public static GameObject SpawnFromPool(string key, Vector2 position, Quaternion quaternion) { return instance._SpawnFromPool(key, position, quaternion); }
+    public static GameObject SpawnFromPool(string key, Vector2 position, Transform parent, Quaternion quaternion) { return instance._SpawnFromPool(key, position, parent, quaternion); }
 
     private void _ReturnToPool(string key, GameObject obj)
     {
-        Debug.Log("Return");
         Transform parent = null;
         Queue<GameObject> pool = null;
         foreach (var item in objectInfos)
@@ -153,5 +159,11 @@ public class ObjectPoolManager : MonoBehaviour
         }
         obj.SetActive(false);
     }
+    private IEnumerator _ReturnToPool(string key, GameObject obj, float time)
+    {
+        yield return new WaitForSeconds(time);
+        _ReturnToPool(key, obj);
+    }
     public static void ReturnToPool(string key, GameObject obj) => instance._ReturnToPool(key, obj);
+    public static void ReturnToPool(string key, GameObject obj, float time) => instance.StartCoroutine(instance._ReturnToPool(key, obj, time));
 }

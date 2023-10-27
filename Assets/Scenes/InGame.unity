@@ -570,13 +570,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectInfos:
   - objectName: SmallMonster
-    objectInitialCount: 10
+    objectInitialCount: 100
     objectParent: {fileID: 0}
     objectPrefab: {fileID: 2265822008407718610, guid: 3a045875cebb075409979ce63ae5c61c, type: 3}
   - objectName: BigMonster
-    objectInitialCount: 10
+    objectInitialCount: 100
     objectParent: {fileID: 0}
     objectPrefab: {fileID: 2265822008407718610, guid: cb66b019cb9f77d43af8b22aeca30108, type: 3}
+  - objectName: DeathEffect
+    objectInitialCount: 100
+    objectParent: {fileID: 0}
+    objectPrefab: {fileID: 1136957122057164087, guid: ef4c1f402ae159441a03c2176c89fe8b, type: 3}
 --- !u!4 &97700216
 Transform:
   m_ObjectHideFlags: 0
@@ -1106,7 +1110,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -2
+  m_SortingOrder: -3
   m_Sprite: {fileID: 21300000, guid: 6882f55fef0496f44bd817e5c9046eae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4155,8 +4159,8 @@ MonoBehaviour:
   BasicTurretPrice: 0
   ExplosionTurretPrice: 0
   LaserTurretPrice: 0
-  PlacementSlot1Price: 0
-  PlacementSlot2Price: 0
+  PlacementSlot1Price: 300
+  PlacementSlot2Price: 1000
   Placement_Btn: {fileID: 0}
   Placement_UI: {fileID: 0}
   Placement_1: {fileID: 0}
@@ -5265,7 +5269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: dcdf52c7c3f1a5a42b78b2f0d13eb09d, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -6048,7 +6052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.9103774, b: 0.9103774, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
