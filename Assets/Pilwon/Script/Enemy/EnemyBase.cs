@@ -20,6 +20,8 @@ public abstract class EnemyBase : MonoBehaviour
     SpriteRenderer spr;
 
     private float baseMoveSpeed;
+    
+    private Material _material;
 
     private void Awake()
     {
@@ -36,6 +38,10 @@ public abstract class EnemyBase : MonoBehaviour
 
         spr.color = new Color(1, 1, 1, 1);
         StopAllCoroutines();
+
+        _material = spr.material;
+
+        StartCoroutine(DissolveShow());
     }
     protected virtual void Start()
     {
@@ -45,8 +51,7 @@ public abstract class EnemyBase : MonoBehaviour
     public virtual void Damage(int damage)
     {
         hp -= damage;
-        StartCoroutine(alpha(spr, 1));
-
+        
         if (hp <= 0)
         {
             if (isDie) return;
@@ -54,7 +59,10 @@ public abstract class EnemyBase : MonoBehaviour
             
             ObjectPoolManager.ReturnToPool("DeathEffect",ObjectPoolManager.SpawnFromPool("DeathEffect",transform.position), 2);
             dieAction?.Invoke();
+            return;
         }
+        
+        StartCoroutine(alpha(spr, 1));
     }
 
     IEnumerator alpha(SpriteRenderer image, int sec)
@@ -83,6 +91,18 @@ public abstract class EnemyBase : MonoBehaviour
         {
             // Speed Up Col 에서 나가면 원래 스피드로 바뀜
             moveSpeed -= baseMoveSpeed * 0.1f;
+        }
+    }
+    
+    private IEnumerator DissolveShow()
+    {
+        float count = 1;
+
+        while (count > 0)
+        {
+            _material.SetFloat("_DissolveAmount", count);
+            count -= Time.deltaTime;
+            yield return null;
         }
     }
 
