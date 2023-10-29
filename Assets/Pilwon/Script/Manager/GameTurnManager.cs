@@ -18,13 +18,15 @@ public class GameTurnManager : MonoBehaviour
 
     public Wave[] wave;
 
-    [Header("# TurnMgr Info")]
+    [Header("# TurnMgr Info")] 
+    public int enemyHealthMultiply = 1;
     public int curWave = 0;
     public bool isBreakTime;
     public bool isEnd;
     public bool isPause = false;
 
     public float totalGameTime = 0;
+   
 
     [Header("# TurnMgr UI Info")]
     [SerializeField] private Camera mainCam;
@@ -60,17 +62,11 @@ public class GameTurnManager : MonoBehaviour
         if (isBreakTime) timer.text = new string((int)curTime + " / " + waitTime);
         else timer.text = new string((int)curTime + " / " + wave[curWave].maxSpawnTime);
 
-        if (curWave >= wave.Length)
-        {
-            GameManager.instance.End(false);
-            isEnd = true;
-            return;
-        }
-
         if (curTime >= wave[curWave].maxSpawnTime && !isBreakTime)
         {
             curTime = 0;
-            curWave++; // 다음 웨이브
+            curWave = Random.Range(0, wave.Length);
+            enemyHealthMultiply++;
             GameManager.instance.waveNumber++;
             breakTime();
         }

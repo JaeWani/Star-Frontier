@@ -33,8 +33,7 @@ public abstract class EnemyBase : MonoBehaviour
     {
         isDie = false;
         spr = GetComponent<SpriteRenderer>();
-        hp = maxHP * GameTurnManager.instance.curWave * 2;
-        moveSpeed += GameTurnManager.instance.curWave / 2;
+        hp = maxHP * GameTurnManager.instance.enemyHealthMultiply;
 
         spr.color = new Color(1, 1, 1, 1);
         StopAllCoroutines();
