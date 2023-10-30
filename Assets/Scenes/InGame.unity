@@ -919,6 +919,8 @@ MonoBehaviour:
   turretProp: {fileID: 0}
   curTurretIndex: 0
   level: 0
+  outlineMaterial: {fileID: 2100000, guid: cccef2ef0f24c90428d5dc00bc28e9dc, type: 2}
+  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!212 &148599983
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1971,6 +1973,8 @@ MonoBehaviour:
   turretProp: {fileID: 0}
   curTurretIndex: 0
   level: 0
+  outlineMaterial: {fileID: 2100000, guid: cccef2ef0f24c90428d5dc00bc28e9dc, type: 2}
+  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!212 &347031926
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3072,6 +3076,8 @@ MonoBehaviour:
   turretProp: {fileID: 0}
   curTurretIndex: 0
   level: 0
+  outlineMaterial: {fileID: 2100000, guid: cccef2ef0f24c90428d5dc00bc28e9dc, type: 2}
+  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!212 &474244866
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5028,6 +5034,8 @@ MonoBehaviour:
   turretProp: {fileID: 0}
   curTurretIndex: 0
   level: 0
+  outlineMaterial: {fileID: 2100000, guid: cccef2ef0f24c90428d5dc00bc28e9dc, type: 2}
+  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!212 &741090217
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6771,6 +6779,8 @@ MonoBehaviour:
   turretProp: {fileID: 0}
   curTurretIndex: 0
   level: 0
+  outlineMaterial: {fileID: 2100000, guid: cccef2ef0f24c90428d5dc00bc28e9dc, type: 2}
+  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!212 &942970903
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7514,6 +7524,8 @@ MonoBehaviour:
   turretProp: {fileID: 0}
   curTurretIndex: 0
   level: 0
+  outlineMaterial: {fileID: 2100000, guid: cccef2ef0f24c90428d5dc00bc28e9dc, type: 2}
+  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!212 &1015105508
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12236,6 +12248,8 @@ MonoBehaviour:
   turretProp: {fileID: 0}
   curTurretIndex: 0
   level: 0
+  outlineMaterial: {fileID: 2100000, guid: cccef2ef0f24c90428d5dc00bc28e9dc, type: 2}
+  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!212 &2057822718
 SpriteRenderer:
   m_ObjectHideFlags: 0

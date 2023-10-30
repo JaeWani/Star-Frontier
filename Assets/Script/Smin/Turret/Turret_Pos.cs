@@ -14,6 +14,9 @@ public class Turret_Pos : MonoBehaviour
     public int curTurretIndex;
     public int level;
 
+    public Material outlineMaterial;
+    public Material defaultMaterial;
+
     public void Init(int level)
     {
         curTurret.Init(2, 0.5f, 0.2f);
@@ -22,11 +25,37 @@ public class Turret_Pos : MonoBehaviour
     private void OnMouseEnter()
     {
         //여기에 자식 오브젝트들 outline 쉐이더 활성화 하는 코드 넣기
+        if (turret != null)
+        {
+            SpriteRenderer[] srs = GetComponentsInChildren<SpriteRenderer>();
+
+            if (srs != null)
+            {
+                foreach (SpriteRenderer sr in srs)
+                {
+                    sr.material = outlineMaterial;
+                }
+            }
+        }
+        
         Debug.Log("Mouse Enter");
     }
     private void OnMouseExit()
     {
         // 여기에 자식 오브젝트들 outline 쉐이더 비활성화 하는 코드 넣김
+        if (turret != null)
+        {
+            SpriteRenderer[] srs = GetComponentsInChildren<SpriteRenderer>();
+
+            if (srs != null)
+            {
+                foreach (SpriteRenderer sr in srs)
+                {
+                    sr.material = defaultMaterial;
+                }
+            }
+        }
+        
         Debug.Log("Mouse Exit");
     }
 
