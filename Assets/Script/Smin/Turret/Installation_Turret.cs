@@ -74,8 +74,19 @@ public class Installation_Turret : MonoBehaviour
         {
             var obj = Instantiate(turret_prop, pos[curIndex].transform.position + new Vector3(0, 0.15f), Quaternion.identity);
             obj.transform.SetParent(pos[curIndex].transform);
-            var temp = Instantiate(turretPrefab[turretIndex], pos[curIndex].transform.position + new Vector3(0, 0.45f), Quaternion.identity);
+            var temp = Instantiate(turretPrefab[turretIndex], pos[curIndex].transform.position + new Vector3(0, 0.45f), Quaternion.identity).GetComponent<Turret_Base>();
+            switch (turretIndex)
+            {
+                case 0: temp.turret_Kind = Turret_Kind.Basic; break;
+                case 1: temp.turret_Kind = Turret_Kind.Boom; break;
+                case 2: temp.turret_Kind = Turret_Kind.Lazer; break;
+
+                default: break;
+            }
             temp.transform.SetParent(pos[curIndex].transform);
+
+            pos[curIndex].turret = temp.gameObject;
+            pos[curIndex].turretProp = obj;
             pos[curIndex].curTurret = temp;
             pos[curIndex].curTurretIndex = turretIndex;
             SoundManager.Instance.SoundInt(6, 1f, 1);
@@ -106,7 +117,7 @@ public class Installation_Turret : MonoBehaviour
 
         while (true)
         {
-            
+
             yield return null;
             if (curIndex < 0)
             {
@@ -136,7 +147,7 @@ public class Installation_Turret : MonoBehaviour
         curIndex++;
         while (true)
         {
-        
+
             yield return null;
             if (curIndex > pos.Count - 1)
             {
@@ -148,7 +159,7 @@ public class Installation_Turret : MonoBehaviour
                 curIndex++;
                 continue;
             }
-            if(pos[curIndex].curTurret != null)
+            if (pos[curIndex].curTurret != null)
             {
                 curIndex++;
                 continue;
@@ -177,10 +188,10 @@ public class Installation_Turret : MonoBehaviour
     public bool Check_PullTurret()
     {
         int num = 0;
-        foreach(var item in pos)
-            if(item.curTurret == null) num++;
-            
-        if(num == 0) return false;
+        foreach (var item in pos)
+            if (item.curTurret == null) num++;
+
+        if (num == 0) return false;
         else return true;
     }
 
