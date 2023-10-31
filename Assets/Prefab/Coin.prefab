@@ -99,8 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a2a5ce39fc088348af9f8a3f9c5ff46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flySpeed: 1
-  isToPlayer: 0
+  gold: 0
+  flySpeed: 10
+  isMagnet: 0
 --- !u!58 &4850444310070463303
 CircleCollider2D:
   m_ObjectHideFlags: 0

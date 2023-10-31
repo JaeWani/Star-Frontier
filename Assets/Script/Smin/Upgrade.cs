@@ -8,10 +8,14 @@ public class Upgrade : MonoBehaviour
 {
     public static Upgrade instance;
 
+    public bool isUpgrade;
+
     [SerializeField] private TextMeshProUGUI nameTxt;
     [SerializeField] private TextMeshProUGUI dmgTxt;
     [SerializeField] private TextMeshProUGUI spdTxt;
     [SerializeField] private TextMeshProUGUI upgTxt;
+
+    [SerializeField] private TextMeshProUGUI upgPriceTxt;
 
     [SerializeField] private Button dmgBtn;
     [SerializeField] private Button spdBtn;
@@ -26,10 +30,12 @@ public class Upgrade : MonoBehaviour
     }
     private void Start()
     {
-        exitBtn.onClick.AddListener(() => {
+        exitBtn.onClick.AddListener(() =>
+        {
             GameTurnManager.instance.isPause = false;
-            gameObject.SetActive(false); 
-            });
+            isUpgrade = false;
+            gameObject.SetActive(false);
+        });
     }
 
     public void Init(Turret_Base turret)
@@ -47,11 +53,17 @@ public class Upgrade : MonoBehaviour
         nameTxt.text = name;
         dmgTxt.text = turret.damage.ToString();
         spdTxt.text = turret.fire_delay.ToString();
+        upgPriceTxt.text = turret.upgradePrice.ToString();
+
 
         if (turret.speedLv >= 5)
         {
             spdBtn.gameObject.SetActive(false);
             spdTxt.text = "최대";
+        }
+        else
+        {
+            spdBtn.gameObject.SetActive(true);
         }
 
         if (turret.isUpgrade) upgTxt.text = "활성화";
@@ -79,7 +91,7 @@ public class Upgrade : MonoBehaviour
                 gameManager.playerMoney -= 200;
                 turret.fire_delay -= turret.increase;
                 spdTxt.text = turret.fire_delay.ToString("0.00");
-                turret.speedLv ++;
+                turret.speedLv++;
                 if (turret.speedLv >= 5)
                 {
                     spdBtn.gameObject.SetActive(false);
@@ -101,12 +113,20 @@ public class Upgrade : MonoBehaviour
         });
 
         if (turret.isUpgrade) upgBtn.gameObject.SetActive(false);
+        else upgBtn.gameObject.SetActive(true);
     }
 
     public void CallUpgradePanel(Turret_Base turret)
     {
-        GameTurnManager.instance.isPause = true;
-        gameObject.SetActive(true);
-        Init(turret);
+        if (!isUpgrade)
+        {
+            isUpgrade = true;
+            GameTurnManager.instance.isPause = true;
+            dmgBtn.onClick.RemoveAllListeners();
+            spdBtn.onClick.RemoveAllListeners();
+            upgBtn.onClick.RemoveAllListeners();
+            gameObject.SetActive(true);
+            Init(turret);
+        }
     }
 }

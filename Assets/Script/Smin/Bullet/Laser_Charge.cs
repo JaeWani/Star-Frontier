@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using DG.Tweening;
 
 public class Laser_Charge : MonoBehaviour
 {
@@ -9,20 +11,24 @@ public class Laser_Charge : MonoBehaviour
     public float sizeup;
     public float shot_delay;
     public float shot_time;
-    
 
-    private void Start() {
+
+    private void Start()
+    {
         StartCoroutine(Chage());
-    }   
-
+    }
+    private void Update() {
+        
+    }
     IEnumerator Chage()
     {
-        while(true){
-            if(transform.lossyScale == new Vector3(2, 2))
+        while (true)
+        {
+            if (transform.lossyScale == new Vector3(2, 2))
                 break;
             else
                 transform.localScale = new Vector3(transform.localScale.x + sizeup, transform.localScale.y + sizeup, 0);
-            
+
             yield return new WaitForSeconds(0.1f);
         }
 
@@ -35,4 +41,5 @@ public class Laser_Charge : MonoBehaviour
 
         Destroy(gameObject);
     }
+    
 }

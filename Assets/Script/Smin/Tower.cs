@@ -10,7 +10,7 @@ public class Tower : MonoBehaviour
 
     public void Damage(){
         hp--;
-        StartCoroutine(alpha(damage_ui, 1));
+        CameraShake.ShakeCamera(0.1f,0.1f);
         if(hp <= 0){
             GameManager.instance.moneyUi.SetActive(false);
             GameManager.instance.timeUi.SetActive(false);
@@ -22,19 +22,5 @@ public class Tower : MonoBehaviour
             GameManager.instance.End(true);
         }
     }
-
-    IEnumerator alpha(Image image, int sec)
-    {
-        float timer = 0f;
-        while (timer <= sec)
-        {
-            if(hp <= 0)
-            {
-                damage_ui.color = new Color(1, 1, 1, 1);
-            }
-            image.color = new Color(1, 1, 1, 1 - timer / sec);
-            timer += Time.deltaTime;
-            yield return null;
-        }
-    }
+   
 }

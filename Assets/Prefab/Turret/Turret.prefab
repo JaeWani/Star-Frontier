@@ -55,7 +55,7 @@ MonoBehaviour:
   speedLv: 1
   isUpgrade: 0
   upgradePrice: 1000
-  increase: 0.08
+  increase: 0.1
   bulletSpeed: 20
 --- !u!1 &7643056270660632976
 GameObject:

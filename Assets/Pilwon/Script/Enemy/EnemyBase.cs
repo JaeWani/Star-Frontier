@@ -10,8 +10,8 @@ public abstract class EnemyBase : MonoBehaviour
     [Header("# Enemy Info")]
     [SerializeField] protected GameObject attTarget;
     [SerializeField] protected GameObject coin;
-    [SerializeField] protected int hp;
-    [SerializeField] protected int maxHP;
+    [SerializeField] protected float hp;
+    [SerializeField] protected float maxHP;
     [SerializeField] protected float moveSpeed;
     public GameObject deathEffect;
     public Action dieAction;
@@ -47,7 +47,7 @@ public abstract class EnemyBase : MonoBehaviour
         spr = GetComponent<SpriteRenderer>();
     }
 
-    public virtual void Damage(int damage)
+    public virtual void Damage(float damage)
     {
         hp -= damage;
         
