@@ -16,12 +16,19 @@ public abstract class Turret_Base : MonoBehaviour
 
     [SerializeField] protected Transform me;
     [SerializeField] protected GameObject bullet;
-    [SerializeField] protected int level;
-    [SerializeField] public int damage;
+    public int damage;
+    public int damageLv;
     [SerializeField] protected float checkRadius;
-    [SerializeField] public float fire_delay;
+    public float fire_delay;
+    public int speedLv;
+
     protected float cur_delay;
     protected Vector3 direction;
+
+    public bool isUpgrade;
+    public int upgradePrice;
+
+    public float increase;
 
     public void Init(int _damage, float _checkRadius, float _fire_delay)
     {

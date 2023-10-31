@@ -142,9 +142,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a50d0f4dee3b0ae41b8e33340203dba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turret_Kind: 2
   me: {fileID: 428626154010061088}
   bullet: {fileID: 3867253902970615999, guid: 11174ecd32d82de46bfbb06dfce991eb, type: 3}
-  level: 0
   damage: 1
+  damageLv: 1
   checkRadius: 0
   fire_delay: 3
+  speedLv: 1
+  isUpgrade: 0
+  upgradePrice: 3000
+  increase: 0.08
