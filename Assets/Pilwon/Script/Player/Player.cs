@@ -48,6 +48,9 @@ public class Player : MonoBehaviour
 
         if(_inputX < 0) GetComponent<SpriteRenderer>().flipX = true;
         else if(_inputX > 0) GetComponent<SpriteRenderer>().flipX = false;
+        
+        anim.SetFloat("X", _inputX);
+        anim.SetFloat("Y", _inputY);
 
         Vector2 _Vec = new Vector2(_inputX, _inputY).normalized;
         Vector3 localPosition = new Vector3(Mathf.Clamp(transform.position.x, -18.5f, 18.5f),
