@@ -45,12 +45,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb4a072be1fb5844685d91c613e327ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turret_Kind: 0
   me: {fileID: 7643056270660632977}
   bullet: {fileID: 3453406067603583958, guid: e639eb93a7313e34fab24eb0beea1f7f, type: 3}
-  level: 0
   damage: 2
+  damageLv: 1
   checkRadius: 10
   fire_delay: 0.8
+  speedLv: 1
+  isUpgrade: 0
+  upgradePrice: 1000
+  increase: 0.08
   bulletSpeed: 20
 --- !u!1 &7643056270660632976
 GameObject:

@@ -24,7 +24,6 @@ public class Turret_Pos : MonoBehaviour
     }
     private void OnMouseEnter()
     {
-        //여기에 자식 오브젝트들 outline 쉐이더 활성화 하는 코드 넣기
         if (turret != null)
         {
             SpriteRenderer[] srs = GetComponentsInChildren<SpriteRenderer>();
@@ -37,12 +36,9 @@ public class Turret_Pos : MonoBehaviour
                 }
             }
         }
-        
-        Debug.Log("Mouse Enter");
     }
     private void OnMouseExit()
     {
-        // 여기에 자식 오브젝트들 outline 쉐이더 비활성화 하는 코드 넣김
         if (turret != null)
         {
             SpriteRenderer[] srs = GetComponentsInChildren<SpriteRenderer>();
@@ -55,13 +51,10 @@ public class Turret_Pos : MonoBehaviour
                 }
             }
         }
-        
-        Debug.Log("Mouse Exit");
     }
 
     private void OnMouseDown()
     {
-        Debug.Log("Clicked");
         Upgrade.instance.CallUpgradePanel(curTurret);
     }
 }

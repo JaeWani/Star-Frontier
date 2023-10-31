@@ -11,24 +11,30 @@ public class Upgrade : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameTxt;
     [SerializeField] private TextMeshProUGUI dmgTxt;
     [SerializeField] private TextMeshProUGUI spdTxt;
+    [SerializeField] private TextMeshProUGUI upgTxt;
+
+    [SerializeField] private Button dmgBtn;
+    [SerializeField] private Button spdBtn;
+    [SerializeField] private Button upgBtn;
+
+    [SerializeField] private Button exitBtn;
 
     private void Awake()
     {
         if (instance == null) instance = this;
         gameObject.SetActive(false);
     }
-    void Start()
+    private void Start()
     {
-
+        exitBtn.onClick.AddListener(() => {
+            GameTurnManager.instance.isPause = false;
+            gameObject.SetActive(false); 
+            });
     }
 
-    void Update()
-    {
-
-    }
     public void Init(Turret_Base turret)
     {
-        Debug.Log("1");
+
         Turret_Kind turret_Kind = turret.turret_Kind;
         string name = "";
         switch (turret_Kind)
@@ -41,10 +47,65 @@ public class Upgrade : MonoBehaviour
         nameTxt.text = name;
         dmgTxt.text = turret.damage.ToString();
         spdTxt.text = turret.fire_delay.ToString();
+
+        if (turret.speedLv >= 5)
+        {
+            spdBtn.gameObject.SetActive(false);
+            spdTxt.text = "최대";
+        }
+
+        if (turret.isUpgrade) upgTxt.text = "활성화";
+        else upgTxt.text = "비활성화";
+
+        var gameManager = GameManager.instance;
+
+        dmgBtn.onClick.AddListener(() =>
+        {
+            if (gameManager.playerMoney >= 100)
+            {
+                Debug.Log("공업글");
+                gameManager.playerMoney -= 100;
+                turret.damage += 1;
+                turret.damageLv += 1;
+                dmgTxt.text = turret.damage.ToString();
+            }
+        });
+
+        spdBtn.onClick.AddListener(() =>
+        {
+            if (gameManager.playerMoney >= 200)
+            {
+                Debug.Log("스피드 업글");
+                gameManager.playerMoney -= 200;
+                turret.fire_delay -= turret.increase;
+                spdTxt.text = turret.fire_delay.ToString("0.00");
+                turret.speedLv ++;
+                if (turret.speedLv >= 5)
+                {
+                    spdBtn.gameObject.SetActive(false);
+                    spdTxt.text = "최대";
+                }
+            }
+        });
+
+        upgBtn.onClick.AddListener(() =>
+        {
+            if (gameManager.playerMoney >= turret.upgradePrice)
+            {
+                Debug.Log("업그레이드");
+                gameManager.playerMoney -= turret.upgradePrice;
+                turret.isUpgrade = true;
+                upgBtn.gameObject.SetActive(false);
+                upgTxt.text = "활성화";
+            }
+        });
+
+        if (turret.isUpgrade) upgBtn.gameObject.SetActive(false);
     }
 
     public void CallUpgradePanel(Turret_Base turret)
     {
+        GameTurnManager.instance.isPause = true;
         gameObject.SetActive(true);
         Init(turret);
     }
