@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,9 +35,10 @@ public abstract class Bullet_Base : MonoBehaviour
         if (cur_lifeTime > lifeTime) Destroy(gameObject);
     }
 
-    private void OnCollisionEnter2D(Collision2D hit) {
-        if(hit.collider.CompareTag("Enemy")) {
-            hit.collider.GetComponent<EnemyBase>().Damage(damage);
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.CompareTag("Enemy")) {
+            col.GetComponent<EnemyBase>().Damage(damage);
             Hit_Event();
         }
     }
