@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance { get; private set; }
 
     public Canvas FloatingCanvas;
+    public TextMeshProUGUI WaveText;
 
     [Tooltip("플레이어 돈(Int)")]
     [SerializeField] Text goldText;
@@ -123,6 +124,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         goldText.text = new string(playerMoney + "");
+        WaveText.text = waveNumber + " 웨이브";
     }
 
     /// <summary>
