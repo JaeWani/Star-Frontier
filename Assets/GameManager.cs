@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using DG.Tweening;
 
 
 public class GameManager : MonoBehaviour
@@ -28,8 +29,10 @@ public class GameManager : MonoBehaviour
     public GameObject MainMenuBtn;
 
     [Header(" # Button Ui ")]
-    [SerializeField] private Button ReStartbtnU;
-    [SerializeField] private Button MainMenubtnU;
+    [SerializeField] private Button ReStartbtn2;
+    [SerializeField] private Button MainMenubtn2;
+
+
 
     [Header(" # Include")]
     public GameObject PlayerObject;
@@ -37,6 +40,9 @@ public class GameManager : MonoBehaviour
     public int playerMoney = 100;
     public int monsterKill = 0;
     public int waveNumber = 0;
+    [Header(" # GameOver")]
+    public RectTransform GameOverPanel;
+    public RectTransform GameOverImage;
 
     void Awake()
     {
@@ -45,8 +51,16 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        MainMenubtnU.onClick.AddListener(() => Home());
-        ReStartbtnU.onClick.AddListener(() => ReStart());
+        ReStartbtn2.onClick.AddListener(() =>
+        {
+            Time.timeScale = 1;
+            SceneManager.LoadScene(1);
+        });
+        MainMenubtn2.onClick.AddListener(() =>
+        {
+            Time.timeScale = 1;
+            SceneManager.LoadScene(0);
+        });
 
         SoundManager.Instance.Sound(SoundManager.Instance.mList[0], true, 1);
     }
@@ -69,6 +83,20 @@ public class GameManager : MonoBehaviour
 
             winObj.SetActive(true);
             Time.timeScale = 1;
+        }
+    }
+    public void GameOver()
+    {
+        GameTurnManager.instance.isPause = true;
+        Time.timeScale = 0;
+        StartCoroutine(over());
+        IEnumerator over()
+        {
+            GameOverPanel.DOAnchorPosY(0, 1f).SetEase(Ease.OutQuad).SetUpdate(true);
+            GameOverImage.DOAnchorPosY(250f, 1.2f).SetEase(Ease.OutQuad).SetUpdate(true);
+            ReStartbtn2.GetComponent<RectTransform>().DOAnchorPosY(-100f, 1.5f).SetEase(Ease.OutQuad).SetUpdate(true);
+            MainMenubtn2.GetComponent<RectTransform>().DOAnchorPosY(-100f, 1.5f).SetEase(Ease.OutQuad).SetUpdate(true);
+            yield return null;
         }
     }
 
