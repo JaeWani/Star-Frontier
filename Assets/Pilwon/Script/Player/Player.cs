@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
         {
             if(item.TryGetComponent<Item>(out var use)){
                 eIndicator.SetActive(true);
-                eIndicator.transform.position = transform.position + Vector3.up * (Mathf.Sin(Time.time * 2) * 0.05f + 0.5f);
+                eIndicator.transform.position = transform.position + Vector3.up * (Mathf.Sin(Time.time * 4) * 0.05f + 1f);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     GameTurnManager.instance.isPause = true;
