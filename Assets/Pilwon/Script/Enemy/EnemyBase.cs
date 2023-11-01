@@ -34,7 +34,9 @@ public abstract class EnemyBase : MonoBehaviour
     {
         isDie = false;
         spr = GetComponent<SpriteRenderer>();
-        hp = maxHP * GameTurnManager.instance.enemyHealthMultiply;
+        maxHP = maxHP * GameTurnManager.instance.enemyHealthMultiply;
+        
+        hp = maxHP;
 
         spr.color = new Color(1, 1, 1, 1);
         StopAllCoroutines();
@@ -110,6 +112,13 @@ public abstract class EnemyBase : MonoBehaviour
             count -= Time.deltaTime;
             yield return null;
         }
+    }
+
+    public void HealEnemy(float healRate)
+    {
+        float healHP = maxHP * healRate;
+
+        hp = Mathf.Min(hp + healHP, maxHP);
     }
 
     protected abstract void DieDestroy();

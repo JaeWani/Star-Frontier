@@ -767,6 +767,7 @@ MonoBehaviour:
     - {fileID: 2265822008407718610, guid: 3a045875cebb075409979ce63ae5c61c, type: 3}
     - {fileID: 2265822008407718610, guid: 3a045875cebb075409979ce63ae5c61c, type: 3}
     - {fileID: 2265822008407718610, guid: 3a045875cebb075409979ce63ae5c61c, type: 3}
+    - {fileID: 6345333163638933765, guid: 0a6e5a4cb38c2c34d8c9fa10344fb361, type: 3}
     maxSpawnDelay: 0.75
     maxSpawnTime: 20
   - enemy:
@@ -784,6 +785,7 @@ MonoBehaviour:
     - {fileID: 2265822008407718610, guid: 3a045875cebb075409979ce63ae5c61c, type: 3}
     - {fileID: 2265822008407718610, guid: 3a045875cebb075409979ce63ae5c61c, type: 3}
     - {fileID: 2265822008407718610, guid: bc2ba99d7061fa94484d003773f822ae, type: 3}
+    - {fileID: 6345333163638933765, guid: 0a6e5a4cb38c2c34d8c9fa10344fb361, type: 3}
     maxSpawnDelay: 0.5
     maxSpawnTime: 30
   - enemy:
@@ -800,6 +802,7 @@ MonoBehaviour:
     - {fileID: 2265822008407718610, guid: 3a045875cebb075409979ce63ae5c61c, type: 3}
     - {fileID: 2265822008407718610, guid: 3a045875cebb075409979ce63ae5c61c, type: 3}
     - {fileID: 2265822008407718610, guid: bc2ba99d7061fa94484d003773f822ae, type: 3}
+    - {fileID: 6345333163638933765, guid: 0a6e5a4cb38c2c34d8c9fa10344fb361, type: 3}
     maxSpawnDelay: 0.5
     maxSpawnTime: 30
   - enemy:
@@ -833,6 +836,7 @@ MonoBehaviour:
     - {fileID: 2265822008407718610, guid: 3a045875cebb075409979ce63ae5c61c, type: 3}
     - {fileID: 2265822008407718610, guid: 3a045875cebb075409979ce63ae5c61c, type: 3}
     - {fileID: 2265822008407718610, guid: bc2ba99d7061fa94484d003773f822ae, type: 3}
+    - {fileID: 6345333163638933765, guid: 0a6e5a4cb38c2c34d8c9fa10344fb361, type: 3}
     maxSpawnDelay: 0.6
     maxSpawnTime: 50
   enemyHealthMultiply: 1
@@ -975,6 +979,10 @@ MonoBehaviour:
     objectInitialCount: 100
     objectParent: {fileID: 0}
     objectPrefab: {fileID: 2265822008407718610, guid: bc2ba99d7061fa94484d003773f822ae, type: 3}
+  - objectName: Healer Enemy
+    objectInitialCount: 100
+    objectParent: {fileID: 0}
+    objectPrefab: {fileID: 6345333163638933765, guid: 0a6e5a4cb38c2c34d8c9fa10344fb361, type: 3}
 --- !u!4 &97700216
 Transform:
   m_ObjectHideFlags: 0
