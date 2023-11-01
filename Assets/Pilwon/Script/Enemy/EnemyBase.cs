@@ -13,6 +13,7 @@ public abstract class EnemyBase : MonoBehaviour
     [SerializeField] protected float hp;
     [SerializeField] protected float maxHP;
     [SerializeField] protected float moveSpeed;
+    [SerializeField] public string poolKey;
     public GameObject deathEffect;
     public Action dieAction;
     protected Animator anim;
@@ -81,6 +82,12 @@ public abstract class EnemyBase : MonoBehaviour
         {
             // Speed Up Col 에 닿으면 스피드 10% 증가
             moveSpeed += baseMoveSpeed * 0.1f;
+        }
+        
+        if (other.gameObject.CompareTag("Tower"))
+        {
+            other.GetComponent<Tower>().Damage();
+            DieDestroy();
         }
     }
 

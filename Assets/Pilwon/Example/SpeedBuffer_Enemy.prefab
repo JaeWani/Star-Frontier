@@ -147,7 +147,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -201,9 +201,9 @@ MonoBehaviour:
   hp: 8
   maxHP: 0
   moveSpeed: 0.7
+  poolKey: SpeedUPEnemy
   deathEffect: {fileID: 1136957122057164087, guid: ef4c1f402ae159441a03c2176c89fe8b, type: 3}
   curSize: 3
-  poolKey: SpeedUPEnemy
 --- !u!95 &515925381
 Animator:
   serializedVersion: 5

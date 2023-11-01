@@ -37,16 +37,6 @@ public class Enemy : EnemyBase
         else if (rigid.velocity.x < 0) GetComponent<SpriteRenderer>().flipX = true;
     }
 
-    void OnCollisionEnter2D(Collision2D collison)
-    {
-        if (collison.gameObject.CompareTag("Tower"))
-        {
-            collison.collider.GetComponent<Tower>().Damage();
-            DieDestroy();
-        }
-    }
-
-    [SerializeField] public string poolKey;
     protected override void DieDestroy()
     {
         SoundManager.Instance.Sound(SoundManager.Instance.soundList[4], false, 1);
