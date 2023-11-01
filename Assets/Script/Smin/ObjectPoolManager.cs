@@ -155,7 +155,7 @@ public class ObjectPoolManager : MonoBehaviour
         else
         {
             pool.Enqueue(obj);
-            obj.transform.parent = parent;
+            obj.transform.SetParent(parent);
         }
         obj.SetActive(false);
     }

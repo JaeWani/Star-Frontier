@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
 
+    public Canvas FloatingCanvas;
+
     [Tooltip("플레이어 돈(Int)")]
     [SerializeField] Text goldText;
 

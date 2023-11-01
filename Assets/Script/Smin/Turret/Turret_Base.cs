@@ -16,7 +16,7 @@ public abstract class Turret_Base : MonoBehaviour
 
     [SerializeField] protected Transform me;
     [SerializeField] protected GameObject bullet;
-    public int damage;
+    public float damage;
     public int damageLv;
     [SerializeField] protected float checkRadius;
     public float fire_delay;
@@ -28,6 +28,7 @@ public abstract class Turret_Base : MonoBehaviour
     public bool isUpgrade;
     public int upgradePrice;
 
+    public float dmgIncrease;
     public float increase;
 
     public void Init(int _damage, float _checkRadius, float _fire_delay)

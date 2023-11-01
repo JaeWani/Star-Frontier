@@ -14,6 +14,7 @@ public abstract class EnemyBase : MonoBehaviour
     [SerializeField] protected float maxHP;
     [SerializeField] protected float moveSpeed;
     public GameObject deathEffect;
+    public GameObject FloatingText;
     public Action dieAction;
     protected Animator anim;
     bool isDie;
@@ -50,13 +51,12 @@ public abstract class EnemyBase : MonoBehaviour
     public virtual void Damage(float damage)
     {
         hp -= damage;
-        
+        //var obj = ObjectPoolManager.SpawnFromPool("FloatingText",new Vector3(0,0,1) + transform.position).GetComponent<FloatingText>().str = damage.ToString("0.0");
         if (hp <= 0)
         {
             if (isDie) return;
             isDie = true;
-            
-            ObjectPoolManager.ReturnToPool("DeathEffect",ObjectPoolManager.SpawnFromPool("DeathEffect",transform.position), 2);
+           ObjectPoolManager.ReturnToPool("DeathEffect",ObjectPoolManager.SpawnFromPool("DeathEffect",transform.position), 2);
             dieAction?.Invoke();
             return;
         }

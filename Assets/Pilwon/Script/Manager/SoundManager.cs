@@ -10,6 +10,8 @@ public class SoundManager : MonoBehaviour
     public List<AudioClip> mList = new List<AudioClip>();
     public List<AudioClip> soundList = new List<AudioClip>();
     GameObject curBGM;
+    
+    public List<GameObject> objs = new List<GameObject>();
 
     void Awake()
     {
@@ -17,7 +19,7 @@ public class SoundManager : MonoBehaviour
         Sound(mList[0], true, 1);
     }
 
-    public void Sound(AudioClip clip, bool isLoop, float volume){
+    public GameObject Sound(AudioClip clip, bool isLoop, float volume){
         GameObject obj = new GameObject("obj");
         AudioSource audio = obj.AddComponent<AudioSource>();
         audio.clip = clip;
@@ -30,9 +32,11 @@ public class SoundManager : MonoBehaviour
             if(curBGM != null) Destroy(curBGM);
             curBGM = obj;
         }
+        objs.Add(obj);
+        return obj;
     }
 
-    public void SoundInt(int clip, float volume, float speed)
+    public GameObject SoundInt(int clip, float volume, float speed)
     {
         GameObject obj = new GameObject("obj");
         AudioSource audio = obj.AddComponent<AudioSource>();
@@ -43,6 +47,6 @@ public class SoundManager : MonoBehaviour
         audio.Play();
 
         Destroy(obj, soundList[clip].length);
-
+        return obj;
     }
 }

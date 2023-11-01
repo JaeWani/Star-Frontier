@@ -77,9 +77,9 @@ public class Upgrade : MonoBehaviour
             {
                 Debug.Log("공업글");
                 gameManager.playerMoney -= 100;
-                turret.damage += 1;
-                turret.damageLv += 1;
-                dmgTxt.text = turret.damage.ToString();
+                turret.damage += turret.dmgIncrease;
+                turret.damageLv ++;
+                dmgTxt.text = turret.damage.ToString("0.00");
             }
         });
 
