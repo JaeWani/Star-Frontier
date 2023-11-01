@@ -55,7 +55,10 @@ public class HealerEnemy : EnemyBase
                 if (target.gameObject.activeSelf)
                 {
                     // 적의 체력을 20% 회복시킨다.
-                    target.GetComponent<EnemyBase>().HealEnemy(0.2f);
+                    if (target.GetComponent<EnemyBase>() != null)
+                    {
+                        target.GetComponent<EnemyBase>().HealEnemy(0.2f);
+                    }
                 }
             }
         }

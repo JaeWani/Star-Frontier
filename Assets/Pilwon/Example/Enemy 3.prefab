@@ -149,11 +149,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attTarget: {fileID: 0}
   coin: {fileID: 7611253504287922147, guid: 7da73ba4dad0eb4458b0d11a5cecdb5a, type: 3}
-  hp: 2
-  maxHP: 8
+  hp: 3
+  maxHP: 3
   moveSpeed: 3
   poolKey: RabbitMonster
   deathEffect: {fileID: 1136957122057164087, guid: ef4c1f402ae159441a03c2176c89fe8b, type: 3}
+  FloatingText: {fileID: 0}
   curSize: 1
 --- !u!95 &488861468998597395
 Animator:

@@ -19,7 +19,7 @@ public class GameTurnManager : MonoBehaviour
     public Wave[] wave;
 
     [Header("# TurnMgr Info")] 
-    public int enemyHealthMultiply = 1;
+    public float enemyHealthMultiply = 1;
     public int curWave = 0;
     public bool isBreakTime;
     public bool coinMagnet;
@@ -78,8 +78,8 @@ public class GameTurnManager : MonoBehaviour
         if (curTime >= wave[curWave].maxSpawnTime && !isBreakTime)
         {
             curTime = 0;
-            curWave = Random.Range(0, wave.Length);
-            enemyHealthMultiply++;
+            curWave = Random.Range(1, wave.Length);
+            enemyHealthMultiply += 0.5f;
             GameManager.instance.waveNumber++;
             breakTime();
         }
