@@ -766,13 +766,30 @@ MonoBehaviour:
     maxSpawnDelay: 0.75
     maxSpawnTime: 20
   - enemy:
-    - {fileID: 2265822008407718610, guid: 3a045875cebb075409979ce63ae5c61c, type: 3}
     - {fileID: 2265822008407718610, guid: cb66b019cb9f77d43af8b22aeca30108, type: 3}
+    - {fileID: 2265822008407718610, guid: cb66b019cb9f77d43af8b22aeca30108, type: 3}
+    - {fileID: 2265822008407718610, guid: cb66b019cb9f77d43af8b22aeca30108, type: 3}
+    - {fileID: 2265822008407718610, guid: cb66b019cb9f77d43af8b22aeca30108, type: 3}
+    - {fileID: 2265822008407718610, guid: 3a045875cebb075409979ce63ae5c61c, type: 3}
+    - {fileID: 2265822008407718610, guid: 3a045875cebb075409979ce63ae5c61c, type: 3}
+    - {fileID: 744702029438602253, guid: 3bf5965ba015c3c468de17f9902b0af6, type: 3}
+    - {fileID: 2265822008407718610, guid: 3a045875cebb075409979ce63ae5c61c, type: 3}
+    - {fileID: 2265822008407718610, guid: 3a045875cebb075409979ce63ae5c61c, type: 3}
+    - {fileID: 2265822008407718610, guid: 3a045875cebb075409979ce63ae5c61c, type: 3}
+    - {fileID: 2265822008407718610, guid: 3a045875cebb075409979ce63ae5c61c, type: 3}
     maxSpawnDelay: 0.5
     maxSpawnTime: 30
   - enemy:
-    - {fileID: 2265822008407718610, guid: 3a045875cebb075409979ce63ae5c61c, type: 3}
     - {fileID: 2265822008407718610, guid: cb66b019cb9f77d43af8b22aeca30108, type: 3}
+    - {fileID: 2265822008407718610, guid: cb66b019cb9f77d43af8b22aeca30108, type: 3}
+    - {fileID: 2265822008407718610, guid: cb66b019cb9f77d43af8b22aeca30108, type: 3}
+    - {fileID: 2265822008407718610, guid: cb66b019cb9f77d43af8b22aeca30108, type: 3}
+    - {fileID: 2265822008407718610, guid: 3a045875cebb075409979ce63ae5c61c, type: 3}
+    - {fileID: 744702029438602253, guid: 3bf5965ba015c3c468de17f9902b0af6, type: 3}
+    - {fileID: 2265822008407718610, guid: 3a045875cebb075409979ce63ae5c61c, type: 3}
+    - {fileID: 2265822008407718610, guid: 3a045875cebb075409979ce63ae5c61c, type: 3}
+    - {fileID: 2265822008407718610, guid: 3a045875cebb075409979ce63ae5c61c, type: 3}
+    - {fileID: 2265822008407718610, guid: 3a045875cebb075409979ce63ae5c61c, type: 3}
     maxSpawnDelay: 0.45
     maxSpawnTime: 30
   - enemy:
@@ -916,6 +933,10 @@ MonoBehaviour:
     objectInitialCount: 100
     objectParent: {fileID: 0}
     objectPrefab: {fileID: 1136957122057164087, guid: ef4c1f402ae159441a03c2176c89fe8b, type: 3}
+  - objectName: SpeedUPEnemy
+    objectInitialCount: 100
+    objectParent: {fileID: 0}
+    objectPrefab: {fileID: 744702029438602253, guid: 3bf5965ba015c3c468de17f9902b0af6, type: 3}
 --- !u!4 &97700216
 Transform:
   m_ObjectHideFlags: 0

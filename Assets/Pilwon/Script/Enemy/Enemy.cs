@@ -33,8 +33,8 @@ public class Enemy : EnemyBase
     {
         Vector2 enemyDir = attTarget.transform.position - this.transform.position;
         rigid.velocity = enemyDir.normalized * moveSpeed;
-        if (rigid.velocity.x > 0) GetComponent<SpriteRenderer>().flipX = true;
-        else if (rigid.velocity.x < 0) GetComponent<SpriteRenderer>().flipX = false;
+        if (rigid.velocity.x > 0) GetComponent<SpriteRenderer>().flipX = false;
+        else if (rigid.velocity.x < 0) GetComponent<SpriteRenderer>().flipX = true;
     }
 
     void OnCollisionEnter2D(Collision2D collison)
