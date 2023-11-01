@@ -56,6 +56,7 @@ MonoBehaviour:
   speedLv: 1
   isUpgrade: 0
   upgradePrice: 1000
+  dmgIncrease: 1
   increase: 0.1
   bulletSpeed: 20
 --- !u!61 &1230846705274009221
