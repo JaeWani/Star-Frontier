@@ -149,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attTarget: {fileID: 0}
   coin: {fileID: 7611253504287922147, guid: 7da73ba4dad0eb4458b0d11a5cecdb5a, type: 3}
-  hp: 3
+  hp: 2
   maxHP: 8
   moveSpeed: 3
   poolKey: RabbitMonster
