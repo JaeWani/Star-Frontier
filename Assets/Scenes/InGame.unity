@@ -800,7 +800,7 @@ MonoBehaviour:
     - {fileID: 2265822008407718610, guid: 3a045875cebb075409979ce63ae5c61c, type: 3}
     - {fileID: 2265822008407718610, guid: 3a045875cebb075409979ce63ae5c61c, type: 3}
     - {fileID: 2265822008407718610, guid: bc2ba99d7061fa94484d003773f822ae, type: 3}
-    maxSpawnDelay: 0.45
+    maxSpawnDelay: 0.5
     maxSpawnTime: 30
   - enemy:
     - {fileID: 744702029438602253, guid: 3bf5965ba015c3c468de17f9902b0af6, type: 3}
@@ -815,7 +815,7 @@ MonoBehaviour:
     - {fileID: 2265822008407718610, guid: cb66b019cb9f77d43af8b22aeca30108, type: 3}
     - {fileID: 2265822008407718610, guid: 3a045875cebb075409979ce63ae5c61c, type: 3}
     - {fileID: 2265822008407718610, guid: bc2ba99d7061fa94484d003773f822ae, type: 3}
-    maxSpawnDelay: 0.4
+    maxSpawnDelay: 0.5
     maxSpawnTime: 40
   - enemy:
     - {fileID: 744702029438602253, guid: 3bf5965ba015c3c468de17f9902b0af6, type: 3}
@@ -833,11 +833,12 @@ MonoBehaviour:
     - {fileID: 2265822008407718610, guid: 3a045875cebb075409979ce63ae5c61c, type: 3}
     - {fileID: 2265822008407718610, guid: 3a045875cebb075409979ce63ae5c61c, type: 3}
     - {fileID: 2265822008407718610, guid: bc2ba99d7061fa94484d003773f822ae, type: 3}
-    maxSpawnDelay: 0.3
+    maxSpawnDelay: 0.6
     maxSpawnTime: 50
   enemyHealthMultiply: 1
   curWave: 0
   isBreakTime: 0
+  coinMagnet: 0
   isEnd: 0
   isPause: 0
   totalGameTime: 0

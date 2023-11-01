@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gold: 0
-  flySpeed: 10
+  flySpeed: 7
   isMagnet: 0
 --- !u!58 &4850444310070463303
 CircleCollider2D:

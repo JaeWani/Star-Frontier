@@ -22,6 +22,7 @@ public class GameTurnManager : MonoBehaviour
     public int enemyHealthMultiply = 1;
     public int curWave = 0;
     public bool isBreakTime;
+    public bool coinMagnet;
     public bool isEnd;
     public bool isPause = false;
 
@@ -61,6 +62,18 @@ public class GameTurnManager : MonoBehaviour
 
         if (isBreakTime) timer.text = new string((int)curTime + " / " + waitTime);
         else timer.text = new string((int)curTime + " / " + wave[curWave].maxSpawnTime);
+
+        if (!isBreakTime)
+        {
+            if (wave[curWave].maxSpawnTime - curTime < 0.5f)
+            {
+                coinMagnet = true;
+            }
+            else
+            {
+                coinMagnet = false;
+            }
+        }
 
         if (curTime >= wave[curWave].maxSpawnTime && !isBreakTime)
         {

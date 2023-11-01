@@ -80,8 +80,8 @@ public abstract class EnemyBase : MonoBehaviour
     {
         if (other.CompareTag("Speed UP Col"))
         {
-            // Speed Up Col 에 닿으면 스피드 10% 증가
-            moveSpeed += baseMoveSpeed * 0.1f;
+            // Speed Up Col 에 닿으면 스피드 40% 증가
+            moveSpeed += baseMoveSpeed * 0.4f;
         }
         
         if (other.gameObject.CompareTag("Tower"))
@@ -96,7 +96,7 @@ public abstract class EnemyBase : MonoBehaviour
         if (other.CompareTag("Speed UP Col"))
         {
             // Speed Up Col 에서 나가면 원래 스피드로 바뀜
-            moveSpeed -= baseMoveSpeed * 0.1f;
+            moveSpeed -= baseMoveSpeed * 0.4f;
         }
     }
     

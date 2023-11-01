@@ -36,7 +36,7 @@ public class Coin : MonoBehaviour
     }
     void Magnet()
     {
-        if (isMagnet)
+        if (isMagnet || GameTurnManager.instance.coinMagnet)
         {
             Vector2 target = GameManager.instance.PlayerObject.transform.position;
 
