@@ -125,6 +125,11 @@ public class GameManager : MonoBehaviour
     {
         goldText.text = new string(playerMoney + "");
         WaveText.text = waveNumber + " 웨이브";
+
+        if (Input.GetKeyDown(KeyCode.F12))
+        {
+            playerMoney += 10000;
+        }
     }
 
     /// <summary>
