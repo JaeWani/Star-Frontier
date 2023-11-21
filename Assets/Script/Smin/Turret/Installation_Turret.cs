@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Installation_Turret : MonoBehaviour
 {
-    [SerializeField] List<Turret_Pos> pos = new List<Turret_Pos>();
+    public static Installation_Turret instance;
+
+    public List<Turret_Pos> pos = new List<Turret_Pos>();
     [SerializeField] GameObject arrow;
     [SerializeField] List<Turret_Base> turretPrefab = new List<Turret_Base>();
     [SerializeField] GameObject turret_prop;
+    [SerializeField] GameObject effect;
     public int turretIndex;
 
     bool isChoice;
@@ -16,6 +19,11 @@ public class Installation_Turret : MonoBehaviour
     int maxLevel = 2;
     int Count;
 
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
     public void Init(int index)
     {
         isChoice = true;
@@ -50,6 +58,7 @@ public class Installation_Turret : MonoBehaviour
 
     private void Update()
     {
+        arrow.SetActive(isChoice);
         if (!isChoice) return;
 
         if (Input.GetKeyDown(KeyCode.A) && !isChange) StartCoroutine(Left());
@@ -60,21 +69,41 @@ public class Installation_Turret : MonoBehaviour
     public void Choice()
     {
         isChange = true;
+        Instantiate(effect, pos[curIndex].transform.position, Quaternion.identity);
         if (pos[curIndex].curTurret == null)
         {
-            Instantiate(turret_prop, pos[curIndex].transform.position + new Vector3(0, 0.15f), Quaternion.identity);
-            var temp = Instantiate(turretPrefab[turretIndex], pos[curIndex].transform.position + new Vector3(0, 0.45f), Quaternion.identity);
+            var obj = Instantiate(turret_prop, pos[curIndex].transform.position + new Vector3(0, 0.15f), Quaternion.identity);
+            obj.transform.SetParent(pos[curIndex].transform);
+            var temp = Instantiate(turretPrefab[turretIndex], pos[curIndex].transform.position + new Vector3(0, 0.45f), Quaternion.identity).GetComponent<Turret_Base>();
+            switch (turretIndex)
+            {
+                case 0: temp.turret_Kind = Turret_Kind.Basic; break;
+                case 1: temp.turret_Kind = Turret_Kind.Boom; break;
+                case 2: temp.turret_Kind = Turret_Kind.Lazer; break;
+
+                default: break;
+            }
+            temp.transform.SetParent(pos[curIndex].transform);
+
+            pos[curIndex].turret = temp.gameObject;
+            pos[curIndex].turretProp = obj;
             pos[curIndex].curTurret = temp;
             pos[curIndex].curTurretIndex = turretIndex;
+            SoundManager.Instance.SoundInt(6, 1f, 1);
         }
         else if (pos[curIndex].level != maxLevel)
         {
             pos[curIndex].level++;
             pos[curIndex].Init(pos[curIndex].level);
         }
+        SoundManager.Instance.SoundInt(5, 0.5f, 0.9f);
         arrow.SetActive(false);
-        Player.Instance.transform.position = new Vector3(0, -4);
-        Player.Instance.isNotActive = false;
+        if (GameTurnManager.instance.isBreakTime)
+        {
+            Player.Instance.transform.position = new Vector3(0, -4);
+            Player.Instance.isNotActive = false;
+        }
+        GameTurnManager.instance.isPause = false;
         isChoice = false;
         isChange = false;
     }
@@ -82,29 +111,33 @@ public class Installation_Turret : MonoBehaviour
     public IEnumerator Left()
     {
         isChange = true;
+
+
         curIndex--;
+
         while (true)
         {
-            Count++;
-            if (Count > 100)
-            {
-                Debug.Log("left");
-                yield break;
-            }
+
             yield return null;
             if (curIndex < 0)
             {
                 curIndex = pos.Count - 1;
                 continue;
             }
-            if ((pos[curIndex].curTurretIndex != turretIndex && pos[curIndex].curTurret != null) || pos[curIndex].level == maxLevel)
+            if ((pos[curIndex].curTurretIndex != turretIndex && pos[curIndex].curTurret != null) || pos[curIndex].level == maxLevel) // 다른 포탑 놨거나 만렙인 경우 다음으로 넘어가고
             {
                 curIndex--;
                 continue;
             }
+            if (pos[curIndex].curTurret != null)
+            {
+                curIndex--;
+                continue;
+            }
+
             break;
         }
-        yield return StartCoroutine(MoveTo(pos[curIndex].transform.position, 0.5f));
+        yield return StartCoroutine(MoveTo(pos[curIndex].transform.position, 0.1f));
         isChange = false;
     }
 
@@ -114,12 +147,7 @@ public class Installation_Turret : MonoBehaviour
         curIndex++;
         while (true)
         {
-            Count++;
-            if (Count > 100)
-            {
-                Debug.Log("left");
-                yield break;
-            }
+
             yield return null;
             if (curIndex > pos.Count - 1)
             {
@@ -131,9 +159,14 @@ public class Installation_Turret : MonoBehaviour
                 curIndex++;
                 continue;
             }
+            if (pos[curIndex].curTurret != null)
+            {
+                curIndex++;
+                continue;
+            }
             break;
         }
-        yield return StartCoroutine(MoveTo(pos[curIndex].transform.position, 0.5f));
+        yield return StartCoroutine(MoveTo(pos[curIndex].transform.position, 0.1f));
         isChange = false;
     }
 
@@ -152,4 +185,14 @@ public class Installation_Turret : MonoBehaviour
 
         yield break;
     }
+    public bool Check_PullTurret()
+    {
+        int num = 0;
+        foreach (var item in pos)
+            if (item.curTurret == null) num++;
+
+        if (num == 0) return false;
+        else return true;
+    }
+
 }

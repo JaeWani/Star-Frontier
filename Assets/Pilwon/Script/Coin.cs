@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    [SerializeField] private float flySpeed;
-    private Vector2 playerDir;
-    [SerializeField] private bool isToPlayer; // 플레이어에게 닿으면 코인이 갈 지 판단해주는 변수
+    [SerializeField] public int gold; // 이 골드를 획득했을 때 몇 골드를 지급할 지
+
+    [SerializeField] private float flySpeed; // 날아갈 속도
+
+    [SerializeField] private bool isMagnet; // 플레이어에게 닿으면 코인이 갈 지 판단해주는 변수
 
     Rigidbody2D rigid;
 
@@ -17,39 +19,30 @@ public class Coin : MonoBehaviour
 
     void Update()
     {
-        //Magnet();
-    }
-
-    void Magnet()
-    {
-        // if (isToPlayer)
-        // {
-        //     playerDir = -(transform.position - Player.Instance.transform.position).normalized;
-        //     rigid.velocity = new Vector2(playerDir.x, playerDir.y) * flySpeed;
-        // }
+        Magnet();
     }
 
     void OnTriggerEnter2D(Collider2D collison)
     {
-        if (collison.gameObject.name.Equals("CoinMagnet"))
+        if (collison.CompareTag("CoinMagnet"))
+            isMagnet = true;
+
+        if (collison.CompareTag("Player"))
         {
-            StartCoroutine(MoveTo(1));
+            GameManager.AddGold(gold);
+            Destroy(gameObject);
         }
+
     }
-
-    IEnumerator MoveTo(float sec)
+    void Magnet()
     {
-        float timer = 0f;
-        Vector3 start = transform.position;
-
-        while (timer <= sec)
+        if (isMagnet || GameTurnManager.instance.coinMagnet)
         {
-            transform.position = Vector3.LerpUnclamped(start, Player.Instance.transform.position, Easing.easeInOutBack(timer / sec));
-            timer += Time.deltaTime;
-            yield return null;
+            Vector2 target = GameManager.instance.PlayerObject.transform.position;
+
+            Vector2 direction = target - (Vector2)transform.position;
+
+            rigid.velocity = direction * flySpeed;
         }
-        GameManager.instance.playerMoney += Mathf.RoundToInt(10 * Player.Instance.goldMultiple);
-        Destroy(gameObject);
-        yield break;
     }
 }

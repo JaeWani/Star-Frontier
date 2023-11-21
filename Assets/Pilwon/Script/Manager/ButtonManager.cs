@@ -30,21 +30,23 @@ public class ButtonManager : MonoBehaviour
 
     private void StartBtn()
     {
+        SoundManager.Instance.Sound(SoundManager.Instance.soundList[0], false, 1);
         SceneManager.LoadScene("InGame");
     }
 
     private void SettingBtn()
     {
+        SoundManager.Instance.Sound(SoundManager.Instance.soundList[0], false, 1);
         for (int i = 0; i < 3; i++)
         {
             Objects[i].SetActive(false);
         }
         StartCoroutine(MoveTo(settingUi, targetPos.transform.position, 1.5f));
-        Debug.Log("설정창");
     }
 
     IEnumerator SettingQuitBtn()
     {
+        SoundManager.Instance.Sound(SoundManager.Instance.soundList[0], false, 1);
         StartCoroutine(MoveTo(settingUi, targetPos2.transform.position, 1.5f));
         yield return new WaitForSeconds(0.6f);
         for (int i = 0; i < 3; i++)
@@ -56,8 +58,8 @@ public class ButtonManager : MonoBehaviour
 
     private void QuitBtn()
     {
+        SoundManager.Instance.Sound(SoundManager.Instance.soundList[0], false, 1);
         Application.Quit();
-        Debug.Log("게임종료");
     }
 
     IEnumerator MoveTo(GameObject a, Vector3 toPos, float speed)

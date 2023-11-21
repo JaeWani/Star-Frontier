@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ public abstract class Bullet_Base : MonoBehaviour
     float cur_lifeTime;
     [SerializeField] protected float lifeTime;
     [SerializeField] protected float moveSpeed;
-    [SerializeField] protected int damage;
+    [SerializeField] protected float damage;
 
     [SerializeField] protected bool isStop;
 
@@ -15,7 +16,7 @@ public abstract class Bullet_Base : MonoBehaviour
         isStop = _isStop;
     }
 
-    public void Init(float _lifeTime, float _moveSpeed, int _damage)
+    public void Init(float _lifeTime, float _moveSpeed, float _damage)
     {
         lifeTime = _lifeTime;
         moveSpeed = _moveSpeed;
@@ -34,9 +35,10 @@ public abstract class Bullet_Base : MonoBehaviour
         if (cur_lifeTime > lifeTime) Destroy(gameObject);
     }
 
-    private void OnCollisionEnter2D(Collision2D hit) {
-        if(hit.collider.CompareTag("Enemy")) {
-            hit.collider.GetComponent<EnemyBase>().Damage(damage);
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.CompareTag("Enemy")) {
+            col.GetComponent<EnemyBase>().Damage(damage);
             Hit_Event();
         }
     }

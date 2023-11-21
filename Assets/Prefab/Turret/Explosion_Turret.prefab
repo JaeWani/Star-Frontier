@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2295119345244539759}
   - component: {fileID: 6185901946435826947}
+  - component: {fileID: -1872420982021052134}
   m_Layer: 0
   m_Name: Explosion_Turret
   m_TagString: Untagged
@@ -45,13 +46,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb4a072be1fb5844685d91c613e327ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turret_Kind: 1
   me: {fileID: 151544819626345496}
   bullet: {fileID: 3453406067603583958, guid: ac6803c7a84e3684fa668438d8d3dd70, type: 3}
-  level: 0
-  damage: 2
+  damage: 5
+  damageLv: 1
   checkRadius: 8
   fire_delay: 1.2
+  speedLv: 1
+  isUpgrade: 0
+  upgradePrice: 1500
+  dmgIncrease: 1.5
+  increase: 0.05
   bulletSpeed: 10
+--- !u!61 &-1872420982021052134
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866504878564925324}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1480124624770085516
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,6 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 151544819626345496}
   - component: {fileID: 2450032175516068694}
+  - component: {fileID: 5843992723114931371}
   m_Layer: 0
   m_Name: me
   m_TagString: Untagged
@@ -104,7 +138,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: dcdf52c7c3f1a5a42b78b2f0d13eb09d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -124,15 +158,27 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: c64b5baa948469247a5f1a86c245c578, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5843992723114931371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480124624770085516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98607b553c469c64ea5f3f1eecb78dea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

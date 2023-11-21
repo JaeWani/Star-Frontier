@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
 
     [HideInInspector] public Rigidbody2D rigid;
     public bool isNotActive;
+    public GameObject eIndicator;
 
     private void Awake() {
         anim = GetComponent<Animator>();
@@ -33,7 +34,7 @@ public class Player : MonoBehaviour
         }
 
         PlayerMove();
-        if(Input.GetKeyDown(KeyCode.E)) ItemCheck();
+        ItemCheck();
     }
 
     void PlayerMove()
@@ -47,6 +48,9 @@ public class Player : MonoBehaviour
 
         if(_inputX < 0) GetComponent<SpriteRenderer>().flipX = true;
         else if(_inputX > 0) GetComponent<SpriteRenderer>().flipX = false;
+        
+        anim.SetFloat("X", _inputX);
+        anim.SetFloat("Y", _inputY);
 
         Vector2 _Vec = new Vector2(_inputX, _inputY).normalized;
         Vector3 localPosition = new Vector3(Mathf.Clamp(transform.position.x, -18.5f, 18.5f),
@@ -66,9 +70,16 @@ public class Player : MonoBehaviour
         foreach (var item in hits)
         {
             if(item.TryGetComponent<Item>(out var use)){
-                use.Use();
-                isNotActive = true;
-            }
+                eIndicator.SetActive(true);
+                eIndicator.transform.position = transform.position + Vector3.up * (Mathf.Sin(Time.time * 4) * 0.05f + 1f);
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    GameTurnManager.instance.isPause = true;
+                    use.Use();
+                    isNotActive = true;
+                }
+            } else
+            eIndicator.SetActive(false);
         }
     }
 }

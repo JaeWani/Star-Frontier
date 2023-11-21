@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2265822008407718623}
   - component: {fileID: 2265822008407718621}
   - component: {fileID: 488861468998597395}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy 2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: dcdf52c7c3f1a5a42b78b2f0d13eb09d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 74847253, guid: cb68321854f451242941a1ef860125fa, type: 3}
+  m_Sprite: {fileID: -420092776, guid: d1dbd036c585afa4ea6c1038f85a37c7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,14 +98,14 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    oldSize: {x: 2.5, y: 2.5}
     newSize: {x: 0.78125, y: 0.78125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -150,10 +150,12 @@ MonoBehaviour:
   attTarget: {fileID: 0}
   coin: {fileID: 7611253504287922147, guid: 7da73ba4dad0eb4458b0d11a5cecdb5a, type: 3}
   hp: 8
-  att: 0
+  maxHP: 8
   moveSpeed: 0.7
-  enemyAttDelay: 0
-  enemyGold: 0
+  poolKey: BigMonster
+  deathEffect: {fileID: 1136957122057164087, guid: ef4c1f402ae159441a03c2176c89fe8b, type: 3}
+  FloatingText: {fileID: 5155529957910571196, guid: 319b7a58ab92e7149ab841b1aaad7aaa, type: 3}
+  curSize: 3
 --- !u!95 &488861468998597395
 Animator:
   serializedVersion: 5

@@ -50,5 +50,13 @@ public class Turret : Turret_Base
         Quaternion rot = Quaternion.Euler(0, 0, z - 90f);
         var temp = Instantiate(bullet, transform.position, rot).GetComponent<Bullet_Base>();
         temp.Init(3, bulletSpeed, damage);
+        if(isUpgrade) StartCoroutine(fire(rot,bullet));
+    }
+    WaitForSeconds a = new WaitForSeconds(0.05f);
+    IEnumerator fire(Quaternion rot,GameObject obj)
+    {
+        yield return a;
+        var temp = Instantiate(obj, transform.position,rot).GetComponent<Bullet_Base>();
+        temp.Init(3,bulletSpeed,damage / 2);
     }
 }

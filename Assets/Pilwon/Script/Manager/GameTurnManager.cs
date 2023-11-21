@@ -18,9 +18,16 @@ public class GameTurnManager : MonoBehaviour
 
     public Wave[] wave;
 
-    [Header("# TurnMgr Info")]
+    [Header("# TurnMgr Info")] 
+    public float enemyHealthMultiply = 1;
     public int curWave = 0;
     public bool isBreakTime;
+    public bool coinMagnet;
+    public bool isEnd;
+    public bool isPause = false;
+
+    public float totalGameTime = 0;
+   
 
     [Header("# TurnMgr UI Info")]
     [SerializeField] private Camera mainCam;
@@ -36,8 +43,8 @@ public class GameTurnManager : MonoBehaviour
 
     void Awake()
     {
-        if(instance == null) instance = this;
-        else if(instance != this) Destroy(gameObject);
+        if (instance == null) instance = this;
+        else if (instance != this) Destroy(gameObject);
 
         //waveStart_Btn.onClick.AddListener(() => GameWaveStart());
         breakTime();
@@ -46,28 +53,43 @@ public class GameTurnManager : MonoBehaviour
     void Update()
     {
         GameWave();
+        mainCam.orthographicSize = Mathf.Lerp(mainCam.orthographicSize, isBreakTime ? 5 : 11, Time.deltaTime * 15);
     }
 
     void GameWave()
     {
-        if(isBreakTime) timer.text = new string(waitTime + " : " + (int)curTime);
-        else timer.text = new string(wave[curWave].maxSpawnTime + " : " + (int)curTime);
+        if (isEnd) return;
 
-        if (curWave >= wave.Length)
+        if (isBreakTime) timer.text = new string((int)curTime + " / " + waitTime);
+        else timer.text = new string((int)curTime + " / " + wave[curWave].maxSpawnTime);
+
+        if (!isBreakTime)
         {
-            Debug.Log("웨이브 끝");
-            return;
+            if (wave[curWave].maxSpawnTime - curTime < 0.5f)
+            {
+                coinMagnet = true;
+            }
+            else
+            {
+                coinMagnet = false;
+            }
         }
 
         if (curTime >= wave[curWave].maxSpawnTime && !isBreakTime)
         {
             curTime = 0;
-            curWave++; // 다음 웨이브
+            curWave = Random.Range(1, wave.Length);
+            enemyHealthMultiply += 0.5f;
+            GameManager.instance.waveNumber++;
             breakTime();
         }
 
         if (curTime > waitTime && isBreakTime) GameWaveStart();
-        curTime += Time.deltaTime;
+        if (isPause == false)
+        {
+            curTime += Time.deltaTime;
+            totalGameTime += Time.deltaTime;
+        }
     }
 
     void breakTime()
@@ -76,7 +98,6 @@ public class GameTurnManager : MonoBehaviour
         player.isNotActive = false;
         isBreakTime = true;
         breakTimeObj.SetActive(true);
-        mainCam.orthographicSize = 5;
     }
 
     public void GameWaveStart()
@@ -88,6 +109,5 @@ public class GameTurnManager : MonoBehaviour
         curTime = 0;
         isBreakTime = false;
         breakTimeObj.SetActive(false);
-        mainCam.orthographicSize = 11;
     }
 }
