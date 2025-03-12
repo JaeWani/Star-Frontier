@@ -7430,6 +7430,7 @@ MonoBehaviour:
   - {fileID: 6185901946435826947, guid: ca1b4f3ca7db5b4469c4a779e23d69ce, type: 3}
   - {fileID: 7683254243314154059, guid: 155bc7e90abc8f245973d7453d43d255, type: 3}
   turret_prop: {fileID: 6635840520098457011, guid: 01405a2c73900bc40883d93af025ca13, type: 3}
+  effect: {fileID: 2084922799948154625, guid: 6741a4e321845dc4fa4f606ed920f3ca, type: 3}
   turretIndex: 1
   curIndex: 0
 --- !u!1 &819031283
