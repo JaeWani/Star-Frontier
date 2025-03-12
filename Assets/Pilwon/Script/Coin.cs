@@ -44,8 +44,5 @@ public class Coin : MonoBehaviour
 
             rigid.velocity = direction * flySpeed;
         }
-        GameManager.instance.playerMoney += Mathf.RoundToInt(10 * Player.Instance.goldMultiple);
-        Destroy(gameObject);
-        yield break;
     }
 }
